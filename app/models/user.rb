@@ -15,18 +15,49 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, length: { minimum: 6 }
 
+def User.from_omniauth(auth)
+	where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+		user.provider 							= auth.provider
+		user.uid 										= auth.uid
+		user.name										= auth.info.name
+		user.email 									= auth.info.email
+		user.oauth_token 						= auth.credentials.token
+		user.oauth_expires_at				= Time.at(auth.credentials.expires_at)
+		user.password 							= User.create_password
+		user.password_confirmation 	= user.password
+		user.save!
+	end
+end
+
 def User.new_remember_token
 	SecureRandom.urlsafe_base64
 end
 
-def User.encrypt(token)
+def User.encrypt_token(token)
 	Digest::SHA1.hexdigest(token.to_s)
+end
+
+def self.encrypt_password(pass, salt)
+    return Digest::MD5.hexdigest(pass.to_s+salt.to_s)
+  end
+
+def self.random_string(len)
+  chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
+  newpass = ""
+  1.upto(len) { |i| newpass << chars[rand(chars.size-1)] }
+  return newpass
+end
+
+def self.create_password
+	pass = User.random_string(16)
+  salt = User.random_string(16)
+  User.encrypt_password(pass, salt)
 end
 
 private
 	
 	def create_remember_token
-		self.remember_token = User.encrypt(User.new_remember_token)
+		self.remember_token = User.encrypt_token(User.new_remember_token)
 	end
 
 end
