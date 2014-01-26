@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6 }
 
 def User.from_omniauth(auth)
-	where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+	user = User.find_by(email: auth['info']['email'])
+	if user.nil?
+		user = User.create
 		user.provider 							= auth.provider
 		user.uid 										= auth.uid
 		user.name										= auth.info.name
@@ -26,7 +28,17 @@ def User.from_omniauth(auth)
 		user.password 							= User.create_password
 		user.password_confirmation 	= user.password
 		user.save!
+	else
+		user.update_attributes(
+			provider: 					auth.provider,
+			uid: 								auth.uid,
+			name: 							auth.info.name,
+			email: 							auth.info.email,
+			oauth_token: 				auth.credentials.token,
+			oauth_expires_at: 	Time.at(auth.credentials.expires_at)
+			)
 	end
+	return user
 end
 
 def User.new_remember_token
@@ -42,7 +54,7 @@ def self.encrypt_password(pass, salt)
   end
 
 def self.random_string(len)
-  chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
+  chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + ["&", "#", "(", ")", "-", "_", ":", "!", "?", ";", "%", ".", "+", "="]
   newpass = ""
   1.upto(len) { |i| newpass << chars[rand(chars.size-1)] }
   return newpass
