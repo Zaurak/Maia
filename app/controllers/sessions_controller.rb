@@ -3,6 +3,16 @@ class SessionsController < ApplicationController
 	def new
 	end
 
+	def oauth_login
+		user = User.from_omniauth(env["omniauth.auth"])
+		sign_in user
+		redirect_back_or user
+	end
+
+	def oauth_failure
+		redirect_to signin_path
+	end
+
 	def create
 		user = User.find_by(email: params[:session][:email].downcase)
 		if user && user.authenticate(params[:session][:password])
