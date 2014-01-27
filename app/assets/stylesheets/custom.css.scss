@@ -50,12 +50,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.5em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
+  text-align: left;
   font-weight: normal;
-  color: $grayLight;
 }
 
 p {
@@ -63,6 +62,11 @@ p {
   line-height: 1.7em;
 }
 
+/* Home */
+
+.sign_in {
+  float: right;  
+}
 
 /* header */
 
