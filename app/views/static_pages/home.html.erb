@@ -1,11 +1,58 @@
 <% provide(:title, 'Home') %>
-<div class="center hero-unit">
-  <h1>Maia</h1>
+<div class="">
+  <h1>Maïa Home Page</h1>
 
-  <h2>
-    This is the home page for the Maia website
-  </h2>
+  <h2> What is Maïa ? </h2>
+
+  <p> Short explanation of the concept. </p>
+  <p> What users and admin can gain using Maïa. </p>
+  <p> Philosophy of the project </p>
+
 	<% if !signed_in? %>
-  	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	<div class='row-fluid'>
+		<div class='span6'>
+		<h2> New here ? Sign-up !</h2>
+
+		<p> Use one of your other account to connect to Maïa: </p>
+		<%= link_to "Using Facebook", "/auth/facebook", id: "sign_in", 
+																class: "btn btn-large btn-primary" %>
+  	<%= link_to "Using Google", "/auth/google_oauth2", id: "sign_in", 
+  															class: "btn btn-large btn-primary" %>
+  	<p> Or create an account directly for Maïa: </p>
+ 		<%= link_to "Create Maïa account", signup_path, 
+ 																class: "btn btn-large btn-primary" %>
+		</div>
+		<div class='span6 sign_in'>
+ 		<h2> Already have an account ? Sign-in ! </h2>
+ 		<p> Connect with:
+ 		
+ 		<%= link_to image_tag("fb_logo.png", alt: "Facebook"), "/auth/facebook", 
+ 								id: "sign_in" %>
+  	<%= link_to image_tag("go_logo.png", alt: "Google"), "/auth/google_oauth2", 
+  							id: "sign_in" %></p>
+  	
+  	<%= form_for(:session, url: sessions_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+     <% end %>
+   </div>
   <% end %>
+
+  <h2> How to contribute ? </h2>
+
+  <p> List of useful links </p>
+  <p><%= link_to "Github Link", "https://github.com/Zaurak/Maia", :target => "_blank" %></p>
+  <p><%= link_to "Documentation Link", "#", :target => "_blank" %></p>
+  <p><%= link_to image_tag("fb_tiny.png", alt: "Follow us on Facebook"), 
+  								'https://www.facebook.com/MaiaProjectECE', :target => "_blank" %>
+  	<%= link_to image_tag("tw_tiny.png", alt: "Follow us on Twitter"), 
+  								'https://www.twitter.com/Maia-Project', :target => "_blank"%>
+  	<%= link_to image_tag("go_tiny.png", alt: "Follow us on Google+"), 
+  								'https://plus.google.com/u/123456/', :target => "_blank"%></p>
 </div>
