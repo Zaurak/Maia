@@ -1,0 +1,26 @@
+<% provide(:title, "Sign in") %>
+<h1>Sign in</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <% if !signed_in? %>
+      <%= form_for(:session, url: sessions_path) do |f| %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      <% end %>
+
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+
+      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <% else %>
+    <p> Your're already signed in, What are you doing here ? =)</p>
+    <% end %>
+  </div>
+</div>

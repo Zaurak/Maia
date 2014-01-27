@@ -1,5 +1,11 @@
 <% provide(:title, 'Home') %>
-<h1>Maia</h1>
-<p>
-  This is the home page for the Maia website
-</p>
+<div class="center hero-unit">
+  <h1>Maia</h1>
+
+  <h2>
+    This is the home page for the Maia website
+  </h2>
+	<% if !signed_in? %>
+  	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>

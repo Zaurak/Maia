@@ -1,0 +1,20 @@
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<% if !signed_in? %>
+	    <%= form_for(@user) do |f| %>
+	      <%= render 'fields', f: f %>
+	      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+	      Or
+	      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+	    	<%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+	    <% end %>
+	  <% else %>
+	  	<p> You already signed up to our website and we're grateful about it !</p>
+	  	<p> Don't hesitate to jump in a debate !</p>
+	  	<%= link_to "Home", root_url %>
+	  <% end %>
+  </div>
+</div>
