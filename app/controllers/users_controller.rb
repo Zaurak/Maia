@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user,  only: [:index, :edit, :update]
-  before_action :correct_user,    only: [:edit, :update]
+  before_action :signed_in_user,  only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,    only: [:edit, :update, :destroy]
 
   def show
   	@user = User.find(params[:id])
@@ -35,6 +35,13 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    sign_out
+    User.find(params[:id]).destroy
+    flash[:success] = "Account deleted."
+    redirect_to root_url
   end
 
   private
