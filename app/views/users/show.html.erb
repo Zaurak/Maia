@@ -24,18 +24,16 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="notification"><%= render 'layouts/notification' %></div>
+  <div class="tab-pane active" id="notification"><%= render 'users/notification' %></div>
   <div class="tab-pane" id="information"><%= render 'users/edit' %></div>
-  <div class="tab-pane" id="privileges"><%= render 'layouts/privileges' %></div>
+  <div class="tab-pane" id="privileges"><%= render 'users/privileges' %></div>
   <div class="tab-pane" id="credibility">...</div>
-  <div class="tab-pane" id="myDebates">...</div>
+  <div class="tab-pane" id="myDebates"></div>
 </div>
+    </div> 
 
-    </div>  
+<div class="span3 offset1">
+<h1>Friends list</h1>
+<%= render 'users/friends' %></div> 
   </div>
 </div>
-
-
- 
-
-
