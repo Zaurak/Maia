@@ -4,8 +4,36 @@
     <section>
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        Welcome <%= @user.name %> !
       </h1>
     </section>
   </aside>
+</div> 
+
+<div class="container">  
+  <div class="row">
+    <div class="span8">
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#notification" data-toggle="tab">Notification</a></li>
+  <li><a href="#information" data-toggle="tab">Information</a></li>
+  <li><a href="#privileges" data-toggle="tab">Privileges</a></li>
+  <li><a href="#credibility" data-toggle="tab">Credibility</a></li>
+  <li><a href="#myDebates" data-toggle="tab">My debates</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="notification"><%= render 'users/notification' %></div>
+  <div class="tab-pane" id="information"><%= render 'users/edit' %></div>
+  <div class="tab-pane" id="privileges"><%= render 'users/privileges' %></div>
+  <div class="tab-pane" id="credibility">...</div>
+  <div class="tab-pane" id="myDebates"></div>
+</div>
+    </div> 
+
+<div class="span3 offset1">
+<h1>Friends list</h1>
+<%= render 'users/friends' %></div> 
+  </div>
 </div>
