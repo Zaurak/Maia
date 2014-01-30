@@ -4,7 +4,7 @@
       <%= link_to "maia", root_path, id: "logo" %>
       <% if signed_in? %>
       <ul class="nav pull-left">
-          <li><%= link_to current_user.name, edit_user_path(current_user) %></li>
+          <li><%= link_to current_user.name, user_path(current_user) %></li>
           <li><%= link_to "Debate group", '#' %></li>
           <li><%= link_to "Public Debates", '#' %></li>
       </ul>
@@ -18,7 +18,7 @@
               <%= link_to "Sign out", signout_path, method: "delete" %>
             </li>
           <% else %>
-            <!--<li><%= link_to "Sign in", signin_path %></li>-->
+            <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
         </ul>
       </nav>
