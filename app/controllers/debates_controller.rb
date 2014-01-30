@@ -1,7 +1,28 @@
 class DebatesController < ApplicationController
   def index
   end
+  
+  def show
+  	@debate = Debate.find(params[:id])
+  end
 
   def new
+  	@debate = Debate.new
   end
+
+  def create
+  	@debate = Debate.new(debate_params)
+  	if @debate.save
+  		redirect_to @debate
+      flash[:success] = "New debate saved!"
+  	else
+  		flash[:error] = "You must enter a valid debate question."
+  		render 'new'
+  	end
+  end
+
+  def debate_params
+      params.require(:debate).permit(:description)
+  end
+
 end

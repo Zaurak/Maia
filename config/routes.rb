@@ -1,6 +1,8 @@
 Maia::Application.routes.draw do
   get "debates/index"
   get "debates/new"
+  get "debates/show"
+  
   resources :users  
   resources :debates
 

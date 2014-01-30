@@ -1,3 +1,13 @@
 <% provide(:title, 'New Debate') %>
 <h1>New Debate</h1>
-<p>Find me in app/views/debates/new.html.erb</p>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@debate) do |f| %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+      <%= f.submit "New Debate", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
