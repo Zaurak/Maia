@@ -22,7 +22,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'omniauth-facebook'
 
 # Google authentication
-gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'omniauth-google-oauth2', '~> 0.2.1'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
