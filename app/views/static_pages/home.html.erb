@@ -4,6 +4,12 @@
 
   <h2> What is Maïa ? </h2>
 
+  <!--<%= link_to 'Create a new deb','/newDebate', 
+  :onclick=>"window.open(this.href,'create_company', 'height=600, width=600');return false;" %>
+-->
+<%= link_to 'Create a new deb','/newDebate', 
+  class: "modal-opener" %>
+
   <p> Short explanation of the concept. </p>
   <p> What users and admin can gain using Maïa. </p>
   <p> Philosophy of the project </p>

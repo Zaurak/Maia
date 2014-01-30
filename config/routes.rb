@@ -16,6 +16,7 @@ Maia::Application.routes.draw do
   
   #DEBATING :
   match '/newDebate',                  to: 'debates#new',             via: 'get'
+  match '/newDeb',                  to: 'debates#debN',             via: 'get'
 
   #match 'auth/failure',             to: redirect('/'),           via: 'get'
 
