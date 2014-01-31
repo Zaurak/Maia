@@ -1,0 +1,36 @@
+<% provide(:title, 'New Debate') %>
+<h1>New Debate</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@debate) do |f| %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+      <%= f.submit "New Debate", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<!--
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">New debate</h4>
+      </div>
+      <div class="modal-body">
+    <%= form_for(@debate) do |f| %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <%= f.submit "New Debate", class: "btn btn-large btn-primary" %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+-->
