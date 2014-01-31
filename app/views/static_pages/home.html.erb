@@ -1,12 +1,8 @@
 <% provide(:title, 'Home') %>
+
 <div class="">
-  <h1>Maïa Home Page</h1>
 
-  <h2> What is Maïa ? </h2>
-
-  <p> Short explanation of the concept. </p>
-  <p> What users and admin can gain using Maïa. </p>
-  <p> Philosophy of the project </p>
+<h1><%=  image_tag("logo.png", alt: "Logo", height: '200', width: '200') %></h1>
 
 	<% if !signed_in? %>
 	<div class='row-fluid'>
@@ -14,10 +10,10 @@
 		<h2> New here ? Sign-up !</h2>
 
 		<p> Use one of your other account to connect to Maïa: </p>
-		<%= link_to "Using Facebook", "/auth/facebook", id: "sign_in", 
-																class: "btn btn-large btn-primary" %>
-  	<%= link_to "Using Google", "/auth/google_oauth2", id: "sign_in", 
-  															class: "btn btn-large btn-primary" %>
+		<%= link_to image_tag("fb_logo.png", alt: "Facebook"), "/auth/facebook", 
+ 								id: "sign_in" %>
+  	<%= link_to image_tag("go_logo.png", alt: "Google"), "/auth/google_oauth2", 
+  							id: "sign_in" %>
   	<p> Or create an account directly for Maïa: </p>
  		<%= link_to "Create Maïa account", signup_path, 
  																class: "btn btn-large btn-primary" %>
@@ -42,13 +38,65 @@
       <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
      <% end %>
    </div>
+</div>
   <% end %>
 
-  <h2> How to contribute ? </h2>
 
-  <p> List of useful links </p>
-  <p><%= link_to "Github Link", "https://github.com/Zaurak/Maia", :target => "_blank" %></p>
-  <p><%= link_to "Documentation Link", "#", :target => "_blank" %></p>
+<div class="accordion" id="accordion2">
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" style="color: #000000">
+What is Maïa ?
+</a>
+</div>
+<div id="collapseOne" class="accordion-body collapse">
+<div class="accordion-inner">
+Maïa is a new kind of structured and collaborative web media. Its main goal is to allow users to
+debate efficiently about a subject to answer to a difficult or polemical question.
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" style="color: #000000">
+What users and admin can gain using Maïa.
+</a>
+</div>
+<div id="collapseTwo" class="accordion-body collapse">
+<div class="accordion-inner">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ligula magna, dignissim imperdiet lectus ac, laoreet tincidunt odio. Aenean quis libero placerat, dapibus augue sit amet, pulvinar felis. Curabitur fringilla blandit elit, sit amet semper urna ultrices elementum.
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree" style="color: #000000">
+Philosophy of the project
+</a>
+</div>
+<div id="collapseThree" class="accordion-body collapse">
+<div class="accordion-inner">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ligula magna, dignissim imperdiet lectus ac, laoreet tincidunt odio. Aenean quis libero placerat, dapibus augue sit amet, pulvinar felis. Curabitur fringilla blandit elit, sit amet semper urna ultrices elementum.
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour" style="color: #000000">
+How to contribute ?
+</a>
+</div>
+<div id="collapseFour" class="accordion-body collapse">
+<div class="accordion-inner">
+  <p> List of useful links: </br>
+  <%= link_to "Github Link", "https://github.com/Zaurak/Maia", :target => "_blank" %> </br>
+  <%= link_to "Documentation Link", "#", :target => "_blank" %></p>
+</div>
+</div>
+</div>
+</div>
+
+</br>
   <%= render 'layouts/follow_buttons' %>
 
 </div>
