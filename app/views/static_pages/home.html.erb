@@ -55,10 +55,6 @@
   <p> List of useful links </p>
   <p><%= link_to "Github Link", "https://github.com/Zaurak/Maia", :target => "_blank" %></p>
   <p><%= link_to "Documentation Link", "#", :target => "_blank" %></p>
-  <p><%= link_to image_tag("fb_tiny.png", alt: "Follow us on Facebook"), 
-  								'https://www.facebook.com/MaiaProjectECE', :target => "_blank" %>
-  	<%= link_to image_tag("tw_tiny.png", alt: "Follow us on Twitter"), 
-  								'https://www.twitter.com/Maia-Project', :target => "_blank"%>
-  	<%= link_to image_tag("go_tiny.png", alt: "Follow us on Google+"), 
-  								'https://plus.google.com/u/123456/', :target => "_blank"%></p>
+  <%= render 'layouts/follow_buttons' %>
+
 </div>

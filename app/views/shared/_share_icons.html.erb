@@ -1,0 +1,46 @@
+<div class="share-icons">
+	<script type="text/javascript">
+	function popupwindow(url, title, w, h) {
+    wLeft = window.screenLeft ? window.screenLeft : window.screenX;
+    wTop = window.screenTop ? window.screenTop : window.screenY;
+
+    var left = wLeft + (window.innerWidth / 2) - (w / 2);
+    var top = wTop + (window.innerHeight / 2) - (h / 2);
+    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+	}
+	</script>
+	
+	<% 
+		# Url to be shared with social networks
+		shared_url = CGI.escape "https://www.google.com"
+
+		twitter_link  = "https://twitter.com/intent/tweet"
+		twitter_link += "?text=ThisThis%20debate%20is%20worth%20a%20look:%20"
+		twitter_link += "&url=" + shared_url
+
+  	facebook_link  = "https://www.facebook.com/sharer/sharer.php?app_id=717137668318086&sdk=joey"
+  	facebook_link += "&u=" + shared_url
+  	facebook_link += "&display=popup"
+
+		google_plus_link  = "https://plus.google.com/share"
+		google_plus_link += "?url=" + shared_url
+  %>
+
+
+  <a href=<%= twitter_link %> >
+  	<%= image_tag("tw_icon.png", alt: "Share on Twitter") %>
+  </a>
+
+  <a 	href=<%= facebook_link %> 
+  		onclick="javascript:popupwindow(this.href, '', 600, 600);
+			return false;" >
+  	<%= image_tag("fb_icon.png", alt: "Share on Facebook") %>
+  </a>
+
+	<a 	href=<%= google_plus_link %>
+			onclick="javascript:popupwindow(this.href, '', 600, 600);
+			return false;" >
+			<img src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Share on Google+"/>
+	</a>
+
+</div>

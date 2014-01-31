@@ -168,6 +168,21 @@ input {
   @extend .error;
 }
 
+/* Share buttons */
+
+.share-buttons, .share-icons, .follow-buttons {
+   display: inline-block !important;
+   vertical-align: bottom !important;
+}
+
+.follow-buttons .fb-follow {
+  vertical-align: top !important; 
+}
+
+.share-buttons .fb-share-button {
+   vertical-align: top !important; 
+}
+
 /* Users index */
 
 .users {
