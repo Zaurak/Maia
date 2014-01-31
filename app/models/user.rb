@@ -2,6 +2,13 @@ class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
+	has_many :users_relationships, foreign_key: "follower_id", dependent: :destroy
+	has_many :followed_users, through: :users_relationships, source: :followed
+	has_many :reverse_users_relationships, 	foreign_key: "followed_id",
+																					class_name: 	"UsersRelationship",
+																					dependent: 		:destroy
+	has_many :followers, through: :reverse_users_relationships, source: :follower
+
 	validates :name, 
 						presence: true, 
 						length: { maximum: 50 }
@@ -51,7 +58,7 @@ end
 
 def self.encrypt_password(pass, salt)
     return Digest::MD5.hexdigest(pass.to_s+salt.to_s)
-  end
+end
 
 def self.random_string(len)
   chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + ["&", "#", "(", ")", "-", "_", ":", "!", "?", ";", "%", ".", "+", "="]
@@ -64,6 +71,18 @@ def self.create_password
 	pass = User.random_string(16)
   salt = User.random_string(16)
   User.encrypt_password(pass, salt)
+end
+
+def following_user?(other_user)
+	users_relationships.find_by(followed_id: other_user.id)
+end
+
+def follow_user!(other_user)
+	users_relationships.create!(followed_id: other_user.id)
+end
+
+def unfollow_user!(other_user)
+	users_relationships.find_by(followed_id: other_user.id).destroy
 end
 
 private

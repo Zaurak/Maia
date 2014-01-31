@@ -1,0 +1,33 @@
+<% @user ||= current_user %>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Following <span class="badge pull-right"><%= @user.followed_users.count %></span>
+    </div>
+  <div class="panel-body">
+<!-- List group -->
+    <% @user.followed_users.each do |user| %>
+        <%= render 'user_contact_list', user: user %>
+    <% end %>
+
+  <div class="panel-heading">
+        Followed by <span class="badge pull-right" id="followers"><%= @user.followers.count %></span>
+    </div>
+<!-- List group -->
+<div id='coucou'><% followers = @user.followers %></div>
+    <% followers.each do |user| %>
+        <%= render 'user_contact_list', user: user %>
+    <% end %>
+  </div>
+</div>
+
+<% if signed_in? && @user == current_user %>
+    <br/>
+    <div style="text-align: center;">
+    <button class="btn btn-small btn-info" type="button">New group</button>
+    </div>
+<% end %>
+
+
+
+

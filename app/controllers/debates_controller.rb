@@ -1,4 +1,6 @@
 class DebatesController < ApplicationController
+
+  # Tags should be loaded from xml and accessible easily
   def index
   @tags = ["Computers", "French Laws", "Philosophy", "USA Laws", "Politic", "Religion", "Technology", "Food", "Hardware", "Sport", "Medicine", "Animals"]
   @debate = Debate.new
@@ -9,10 +11,12 @@ class DebatesController < ApplicationController
   end
 
   def new
+    @tags = ["Computers", "French Laws", "Philosophy", "USA Laws", "Politic", "Religion", "Technology", "Food", "Hardware", "Sport", "Medicine", "Animals"]
   	@debate = Debate.new
   end
 
   def create
+    @tags = ["Computers", "French Laws", "Philosophy", "USA Laws", "Politic", "Religion", "Technology", "Food", "Hardware", "Sport", "Medicine", "Animals"]
   	@debate = Debate.new(debate_params)
   	if @debate.save
   		redirect_to @debate

@@ -8,9 +8,10 @@
       </h1>
     </section>
   </aside>
+  <%= render 'follow_form' if signed_in? %>  
 </div> 
 
-<div class="container">  
+<div class="container">
   <div class="row">
     <div class="span8">
 
@@ -25,9 +26,9 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div class="tab-pane active" id="notification"><%= render 'users/notification' %></div>
-    <div class="tab-pane" id="information"><%= render 'users/edit' %></div>
-    <div class="tab-pane" id="privileges"><%= render 'users/privileges' %></div>
+    <div class="tab-pane active" id="notification"><%= render 'notification' %></div>
+    <div class="tab-pane" id="information"><%= render 'edit' %></div>
+    <div class="tab-pane" id="privileges"><%= render 'privileges' %></div>
     <div class="tab-pane" id="credibility">...</div>
     <div class="tab-pane" id="myDebates"></div>
   </div>
@@ -40,7 +41,7 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div class="tab-pane" id="privileges"><%= render 'users/privileges' %></div>
+    <div class="tab-pane" id="privileges"><%= render 'privileges' %></div>
     <div class="tab-pane" id="credibility">...</div>
     <div class="tab-pane active" id="myDebates"></div>
   </div>
@@ -49,10 +50,10 @@
 
 <div class="span3 offset1">
 <% if signed_in? && @user == current_user %>
-  <h1>Friends list</h1>
+  <h1>Your relationships</h1>
  <% else %>
-  <h1><%= @user.name %>'s friends</h1>
+  <h1><%= @user.name %>'s contacts</h1>
 <% end %>
-<%= render 'users/friends' %></div> 
+<%= render 'contacts' %></div> 
   </div>
 </div>
