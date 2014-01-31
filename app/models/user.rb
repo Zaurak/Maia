@@ -39,8 +39,6 @@ def User.from_omniauth(auth)
 		user.update_attributes(
 			provider: 					auth.provider,
 			uid: 								auth.uid,
-			name: 							auth.info.name,
-			email: 							auth.info.email,
 			oauth_token: 				auth.credentials.token,
 			oauth_expires_at: 	Time.at(auth.credentials.expires_at)
 			)
