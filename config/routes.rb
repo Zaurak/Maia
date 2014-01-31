@@ -1,5 +1,8 @@
 Maia::Application.routes.draw do
   get "debates/index"
+  get "debates/new"
+  get "debates/show"
+  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :debates
@@ -10,6 +13,9 @@ Maia::Application.routes.draw do
   match '/signin',                  to: 'sessions#new',          via: 'get'
   match '/signout',                 to: 'sessions#destroy',      via: 'delete'
   match 'auth/:provider/callback',  to: 'sessions#oauth_login',  via: 'get'
+  
+  #DEBATING :
+  match '/newDebate',                  to: 'debates#new',             via: 'get'
   #match 'auth/failure',             to: redirect('/'),           via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.

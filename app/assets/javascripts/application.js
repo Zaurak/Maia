@@ -15,3 +15,34 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+function openPopup(link)
+{
+//   link.hide();
+    window.open("newDebate",'newDebate','toolbar=no,location=no,menubar=no,scrollbars=yes,resizable=no');
+    return false;
+}
+
+function popupDebate()
+{
+	link.hide();
+	window.open(this.href,'newDebate', 'height=600, width=600');
+	return false;
+}
+
+$(function()
+{
+	$('.modal-opener').on('click', function()
+	{
+		window.open(this.href,'newDebate', 'height=600, width=600');
+		return false;
+	});
+	
+	$('.modal-closer').on('click', function()
+	{
+		$('#sky-form-modal-overlay').fadeOut();
+		$('.sky-form-modal').fadeOut();
+		
+		return false;
+	});
+});
