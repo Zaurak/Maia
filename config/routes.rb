@@ -3,7 +3,7 @@ Maia::Application.routes.draw do
   get "debates/new"
   get "debates/show"
   
-  resources :users  
+  resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :debates
   

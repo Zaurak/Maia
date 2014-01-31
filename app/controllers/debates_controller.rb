@@ -26,5 +26,4 @@ class DebatesController < ApplicationController
   def debate_params
       params.require(:debate).permit(:description)
   end
-
 end
