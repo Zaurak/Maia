@@ -29,11 +29,13 @@
   </div>
 </div>
 
-<br/>
-<div style="text-align: center;">
-<button class="btn btn-small btn-info" type="button">New group</button>
-<button class="btn btn-small btn-info" type="button">New friend</button>
-</div>
+<% if signed_in? && @user == current_user %>
+    <br/>
+    <div style="text-align: center;">
+    <button class="btn btn-small btn-info" type="button">New group</button>
+    <button class="btn btn-small btn-info" type="button">New friend</button>
+    </div>
+<% end %>
 
 
 
