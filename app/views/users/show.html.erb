@@ -16,7 +16,7 @@
     <div class="span8">
 
 <% if signed_in? && @user == current_user %>
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs" id="user_tab">
     <li class="active"><a href="#notification" data-toggle="tab">Notification</a></li>
     <li><a href="#information" data-toggle="tab">Information</a></li>
     <li><a href="#privileges" data-toggle="tab">Privileges</a></li>
@@ -33,7 +33,7 @@
     <div class="tab-pane" id="myDebates"></div>
   </div>
 <% else %>
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs" id="user_tab">
     <li><a href="#privileges" data-toggle="tab">Privileges</a></li>
     <li><a href="#credibility" data-toggle="tab">Credibility</a></li>
     <li class="active"><a href="#myDebates" data-toggle="tab"><%= @user.name %>'s debates</a></li>
@@ -47,6 +47,35 @@
   </div>
 <% end %>
     </div> 
+
+  <script>
+   $('#user_tab a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+      $('html, body').animate({scrollTop:0}, 100);
+    });
+
+    // store the currently selected tab in the hash value
+    $("ul.nav-tabs > li > a").on("shown.bs.tab", function (e) {
+        var id = $(e.target).attr("href").substr(1);
+        window.location.hash = id;
+    });
+
+    $(function() {
+      var submitted = $("#edit").data('preview');
+      if (submitted == "true;"){
+        window.location.hash = "#information";
+      };
+    });
+
+    $(document).ready(function () { 
+      $('html, body').animate({scrollTop:0}, 100); 
+      // on load of the page: switch to the currently selected tab
+      var hash = window.location.hash;
+      $('#user_tab a[href="' + hash + '"]').tab('show');
+    });
+
+</script>
 
 <div class="span3 offset1">
 <% if signed_in? && @user == current_user %>
