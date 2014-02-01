@@ -61,6 +61,7 @@
 </div>
 <!--end Modal-->
 
+
 <div class="row">
 <div class="span6">
 <h3>Public Debates</h3>
@@ -75,12 +76,12 @@ data-target="#createModal">
 
 <div class="row">
     <div class="span5">
-    
+
 <div class="row">
 	<div class="span4">
 	<form class="form-search">
 	<div class="input-append">
-	<input type="text" class="span3 search-query" placeholder="General terms of search...">
+	<input type="text" class="span3 search-query" placeholder="General terms of search..." name="search" id="search">
 	<button type="submit" class="btn">Search</button>
 	</div>
 	</form>
@@ -116,23 +117,27 @@ data-target="#createModal">
 </dl>
 	</div>
 
+
+
 <div class="row">
     <div class="span12">
 </br>
 	<h2> Results: </h2>
 	<div class="panel panel-primary">
 	<table class="table table-hover" id="results">
+<% @debates.each do |debate| %>
   	<tr>
-       	<td>Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat. Numne, si Coriolanus habuit amicos, ferre contra patriam arma illi cum Coriolano debuerunt? num Vecellinum amici regnum adpetentem, num Maelium debuerunt iuvare?</td>
-  	</tr>
-  	<tr>
-       	<td>Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat. Numne, si Coriolanus habuit amicos, ferre contra patriam arma illi cum Coriolano debuerunt? num Vecellinum amici regnum adpetentem, num Maelium debuerunt iuvare?</td>
-  	</tr>
-  	<tr>
-       	<td>Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat. Numne, si Coriolanus habuit amicos, ferre contra patriam arma illi cum Coriolano debuerunt? num Vecellinum amici regnum adpetentem, num Maelium debuerunt iuvare?</td>
-  	</tr>
+       	<td><%= link_to debate.description, debate %></td>
+	</tr>
+  <% end %>
 	</table>
 	</div>
 	</div>
 </div>
+
+
+
+
+
+
 
