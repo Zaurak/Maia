@@ -31,9 +31,10 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to user_path(@user) + "#information"
     else
-      render 'edit'
+      params[:submitted] = true
+      render 'show'
     end
   end
 
@@ -52,13 +53,6 @@ class UsersController < ApplicationController
   	end
 
     # Before filters
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])
