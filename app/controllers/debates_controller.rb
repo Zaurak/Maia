@@ -24,7 +24,7 @@ class DebatesController < ApplicationController
   		redirect_to @debate
       flash[:success] = "New debate saved!"
   	else
-  		flash[:error] = "You must enter a valid debate question."
+  		flash.now[:error] = "You must enter a valid debate question."
   		render 'new'
   	end
   end
