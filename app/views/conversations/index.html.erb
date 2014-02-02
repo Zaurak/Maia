@@ -1,0 +1,14 @@
+<h1>Conversations</h1>
+<h2>Unread</h2>
+<ul>
+	<%= render @unread %>
+</ul>
+<h2>Read</h2>
+<ul>
+	<%= render @read %>
+</ul>
+<h2>Trash</h2>
+<ul>
+  <%= render mailbox.trash %>
+</ul>
+<%= link_to 'Start Conversation', :new_conversation %>

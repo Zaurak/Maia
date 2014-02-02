@@ -3,6 +3,13 @@ Maia::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :debates
   resources :users_relationships, only: [:create, :destroy]
+  resources :conversations, only: [:index, :show, :new, :create] do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
   
   root 'static_pages#home'
   match '/help',                    to: 'static_pages#help',     via: 'get'

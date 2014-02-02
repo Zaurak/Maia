@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131171040) do
+ActiveRecord::Schema.define(version: 20140201164964) do
 
   create_table "conversations", force: true do |t|
     t.string   "subject",    default: ""
