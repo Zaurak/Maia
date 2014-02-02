@@ -1,3 +1,6 @@
 class Debate < ActiveRecord::Base
-	validates :description, presence: true
+	belongs_to :user
+	default_scope -> { order('created_at DESC') }
+  	validates :user_id, presence: true
+  	validates :description, presence: true
 end
