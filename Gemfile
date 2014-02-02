@@ -24,6 +24,7 @@ gem 'omniauth-facebook'
 # Google authentication
 gem 'omniauth-google-oauth2', '~> 0.2.1'
 
+# Private messaging
 gem 'mailboxer'
 gem 'simple_form'
 
@@ -47,6 +48,7 @@ gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
+gem 'jquery-ui-rails'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 

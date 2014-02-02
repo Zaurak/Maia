@@ -9,7 +9,7 @@
     </section>
   </aside>
   <%= render 'follow_form' if signed_in? %>  
-  <%= link_to('Messages', :conversations) if signed_in? %>
+  <%= link_to('Messages', :conversations) if signed_in? && current_user?(@user) %>
 </div> 
 
 <div class="container">

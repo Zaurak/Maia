@@ -10,6 +10,9 @@ Maia::Application.routes.draw do
       post :untrash
     end
   end
+  resources :tags, only: [] do
+    get :autocomplete_user_name, :on => :collection
+  end
   
   root 'static_pages#home'
   match '/help',                    to: 'static_pages#help',     via: 'get'

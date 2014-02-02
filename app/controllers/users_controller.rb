@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user) + "#information"
     else
       params[:submitted] = true
+      @debates = @user.debates.paginate(page: params[:page])
       render 'show'
     end
   end
