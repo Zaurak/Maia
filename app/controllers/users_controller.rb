@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     begin
       @user = User.find(params[:id])
+      @debates = @user.debates.paginate(page: params[:page])
     rescue ActiveRecord::RecordNotFound
       flash[:notice] = "This user does not exist"
       redirect_to root_url
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
+    @debate = current_user.debate.build if signed_in?
   end
 
   def create
