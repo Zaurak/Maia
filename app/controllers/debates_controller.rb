@@ -13,15 +13,20 @@ class DebatesController < ApplicationController
   end
 
   def create
-  	@debate = Debate.new(debate_params)
+  	@debate = current_user.debates.build(debate_params) # to create a debate user should be registered   
   	if @debate.save
-  		redirect_to @debate
       flash[:success] = "New debate saved!"
+      redirect_to @debate
   	else
   		flash[:error] = "You must enter a valid debate question."
-  		render 'new'
+      redirect_to "/debates/index"
   	end
   end
+
+  def destroy
+  end
+
+  private
 
   def debate_params
       params.require(:debate).permit(:description)

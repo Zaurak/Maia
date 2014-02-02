@@ -28,7 +28,18 @@
   <div class="tab-pane" id="information"><%= render 'users/edit' %></div>
   <div class="tab-pane" id="privileges"><%= render 'users/privileges' %></div>
   <div class="tab-pane" id="credibility">...</div>
-  <div class="tab-pane" id="myDebates"></div>
+  <!-- Debates for the user-->
+  <div class="tab-pane" id="myDebates">
+    <div class="span8">
+      <% if @user.debates.any? %>
+        <h3>Debates (<%= @user.debates.count %>)</h3>
+        <ol class="debates">
+          <%= render @debates %>
+        </ol>
+        <%= will_paginate @debates %>
+      <% end %>
+    </div>
+  </div>
 </div>
     </div> 
 
