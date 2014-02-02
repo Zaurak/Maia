@@ -13,13 +13,26 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    recipient_names = conversation_params(:recipients).split(',')
+    recipient_names = conversation_params(:recipients).split(', ')
     recipients = User.where(name: recipient_names).all
 
-    conversation = current_user.
+    if recipients.empty?
+      flash.now[:error] = "Recipients does not exist"
+      render 'new'
+    elsif recipient_names.include?(current_user.name)
+      flash.now[:error] = "You can't send a message to yourself"
+      render 'new'
+    elsif recipients.count != recipient_names.count
+      flash.now[:error] = "One of the recipients does not exist"
+      render 'new'
+    elsif !params.has_key?(:body) || !params.has_key?(:subject)
+      flash.now[:error] = "You can't send messages without subject or content"
+      render 'new'
+    else
+      conversation = current_user.
       send_message(recipients, *conversation_params(:body, :subject)).conversation
-
-    redirect_to conversation
+      redirect_to conversation
+    end
   end
 
   def show
