@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @debates = @user.debates.paginate(page: params[:page])
   end
 
   def new
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
+    @debate = current_user.debate.build if signed_in?
   end
 
   def create

@@ -30,7 +30,7 @@
     <div class="tab-pane" id="information"><%= render 'edit' %></div>
     <div class="tab-pane" id="privileges"><%= render 'privileges' %></div>
     <div class="tab-pane" id="credibility">...</div>
-    <div class="tab-pane" id="myDebates"></div>
+    <div class="tab-pane" id="myDebates"><%= render 'debates' %></div>
   </div>
 <% else %>
   <ul class="nav nav-tabs" id="user_tab">
@@ -43,7 +43,7 @@
   <div class="tab-content">
     <div class="tab-pane" id="privileges"><%= render 'privileges' %></div>
     <div class="tab-pane" id="credibility">...</div>
-    <div class="tab-pane active" id="myDebates"></div>
+    <div class="tab-pane active" id="myDebates"><%= render 'debates' %></div>
   </div>
 <% end %>
     </div> 
