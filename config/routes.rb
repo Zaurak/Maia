@@ -1,11 +1,8 @@
 Maia::Application.routes.draw do
-  get "debates/index"
-  get "debates/new"
-  get "debates/show"
-  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :debates
+  resources :users_relationships, only: [:create, :destroy]
   
   root 'static_pages#home'
   match '/help',                    to: 'static_pages#help',     via: 'get'
@@ -15,8 +12,7 @@ Maia::Application.routes.draw do
   match 'auth/:provider/callback',  to: 'sessions#oauth_login',  via: 'get'
   
   #DEBATING :
-  match '/newDebate',                  to: 'debates#new',             via: 'get'
-  #match 'auth/failure',             to: redirect('/'),           via: 'get'
+  match '/newDebate',               to: 'debates#new',           via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

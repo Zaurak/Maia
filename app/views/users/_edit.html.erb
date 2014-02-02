@@ -1,8 +1,8 @@
-<% provide(:title, "Edit user") %>
 <h1>Update your profile</h1>
 
 <div class="row">
-  <div class="span6">
+  <div class="span6 offset1">
+    <div id="edit" data-preview="<%= params[:submitted] ? true : false -%>;"></div>
     <%= form_for(@user) do |f| %>
       <%= render 'fields', f: f %>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
