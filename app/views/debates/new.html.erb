@@ -7,10 +7,31 @@
       <%= f.label :description %>
       <%= f.text_field :description %>
 
+        <div class="row">   
+          <table>
+              <td>
+                <div class="span3">
+                  <p> Presetted tags: </p>
+                <div class="panel panel-primary" id="modal">
+                <table class="table">
+                <% @tags.each do |tag|%>
+                <tr>
+                  <td><input type="checkbox" class="checkbox"/>    <%= tag%></td>
+                </tr>
+                <% end %>
+                </table>
+                </div>
+                </div>     
+              </td>
+        </table>
+      </div>
+      <br />
       <%= f.submit "New Debate", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
+
+      
 
 <!--
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

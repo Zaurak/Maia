@@ -1,7 +1,12 @@
 class DebatesController < ApplicationController
+  before_action :signed_in_user,  only: [:create] 
+
+  # Tags should be loaded from xml and accessible easily
   def index
   @tags = ["Computers", "French Laws", "Philosophy", "USA Laws", "Politic", "Religion", "Technology", "Food", "Hardware", "Sport", "Medicine", "Animals"]
   @debate = Debate.new
+  #@debates = Debate.all
+  @debates = Debate.search(params[:search])
   end
   
   def show
@@ -9,19 +14,26 @@ class DebatesController < ApplicationController
   end
 
   def new
+    @tags = ["Computers", "French Laws", "Philosophy", "USA Laws", "Politic", "Religion", "Technology", "Food", "Hardware", "Sport", "Medicine", "Animals"]
   	@debate = Debate.new
   end
 
   def create
-  	@debate = Debate.new(debate_params)
+    @tags = ["Computers", "French Laws", "Philosophy", "USA Laws", "Politic", "Religion", "Technology", "Food", "Hardware", "Sport", "Medicine", "Animals"]
+  	@debate = current_user.debates.build(debate_params) # to create a debate user should be registered   
   	if @debate.save
-  		redirect_to @debate
       flash[:success] = "New debate saved!"
+      redirect_to @debate
   	else
-  		flash[:error] = "You must enter a valid debate question."
-  		render 'new'
+  		flash.now[:error] = "You must enter a valid debate question."
+      redirect_to "/debates/index"
   	end
   end
+
+  def destroy
+  end
+
+  private
 
   def debate_params
       params.require(:debate).permit(:description)

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @debates = @user.debates.paginate(page: params[:page])
   end
 
   def new
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
+    @debate = current_user.debate.build if signed_in?
   end
 
   def create
@@ -31,9 +33,10 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to user_path(@user) + "#information"
     else
-      render 'edit'
+      params[:submitted] = true
+      render 'show'
     end
   end
 
@@ -52,13 +55,6 @@ class UsersController < ApplicationController
   	end
 
     # Before filters
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

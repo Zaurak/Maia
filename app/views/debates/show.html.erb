@@ -7,7 +7,10 @@
 
 <% provide(:title, @debate.description) %>
 
-<h1><%= @debate.description %></h1>
+<h1>
+  <%= @debate.description %>
+</h1>
+<p> Posted by <%= @debate.user.name %> </p>
 
 <div class="row">
 <div class="span6">

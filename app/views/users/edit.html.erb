@@ -1,18 +1,2 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'fields', f: f %>
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-      <%= link_to "Delete Account", @user, class: "btn btn-large btn-danger",
-       method: :delete, 
-       data: { confirm: "You're about to delete your account, this can't be undone. 
-       									Are you sure ?" } %>
-    <% end %>
-
-    <%= gravatar_for @user %>
-    <%= link_to "Change", "http://gravatar.com/emails", :target => "_blank" %>
-  </div>
-</div>
+<%= render 'edit' %>

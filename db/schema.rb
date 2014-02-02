@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130101008) do
+ActiveRecord::Schema.define(version: 20140202150641) do
 
   create_table "debates", force: true do |t|
     t.string   "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,5 +35,16 @@ ActiveRecord::Schema.define(version: 20140130101008) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+
+  create_table "users_relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_relationships", ["followed_id"], name: "index_users_relationships_on_followed_id"
+  add_index "users_relationships", ["follower_id", "followed_id"], name: "index_users_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "users_relationships", ["follower_id"], name: "index_users_relationships_on_follower_id"
 
 end
