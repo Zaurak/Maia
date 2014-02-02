@@ -1,5 +1,85 @@
+<!-- Modal windows-->
+<%= render 'debates/vote' %>
+<%= render 'debates/answer' %>
+<%= render 'debates/objection' %>
+<%= render 'debates/justification' %>
+<%= render 'debates/tag' %>
+
 <% provide(:title, @debate.description) %>
+
 <h1>
   <%= @debate.description %>
 </h1>
 <p> Posted by <%= @debate.user.name %> </p>
+
+<div class="row">
+<div class="span6">
+Debate started the <b>Date</b> at <b>Time</b> by <b>Name</b>
+</div>
+<div class="span6">
+<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
+</div>
+</div>
+
+</br>
+
+<div class="accordion" id="myaccordion">
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#myaccordion" href="#collapse1" style="color: #000000">
+<b>Synthesis</b>
+</a>
+</div>
+<div id="collapse1" class="accordion-body collapse">
+<div class="accordion-inner">
+<%= render 'debates/synthesis' %>
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#myaccordion" href="#collapse2" style="color: #000000">
+<b>About this debate</b>
+</a>
+</div>
+<div id="collapse2" class="accordion-body collapse">
+<div class="accordion-inner">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ligula magna, dignissim imperdiet lectus ac, laoreet tincidunt odio. Aenean quis libero placerat, dapibus augue sit amet, pulvinar felis. Curabitur fringilla blandit elit, sit amet semper urna ultrices elementum.
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#myaccordion" href="#collapse3" style="color: #000000">
+<b>Full debate</b>
+</a>
+</div>
+<div id="collapse3" class="accordion-body collapse in">
+<div class="accordion-inner">
+<div>
+<%= render 'debates/fullDebate' %>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+$(function(){
+    $("#ok").on('click', function(){
+        if($("select[name=option]").val()=="Objection"){
+    		$('#objectionModal').modal('show')
+            return false;   
+        }
+		if($("select[name=option]").val()=="Justification"){
+    		$('#justificationModal').modal('show')
+            return false;   
+        }
+		if($("select[name=option]").val()=="Tag"){
+    		$('#tagModal').modal('show')
+            return false;   
+        }
+    });
+});
+</script>

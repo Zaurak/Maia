@@ -1,0 +1,28 @@
+<!-- Modal window-->
+<div class="modal hide fade" id="objectionModal" tabindex="-1" role="dialog" aria-labelledby="objectionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h1 class="modal-title" id="objectionModalLabel">New objection</h1>
+      </div>
+      <div class="modal-body">
+<p>Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus fiducia vestri.</p>
+<br/>
+
+<div>Objection type:
+<select class="form-control"">
+<%@objections = ["Toxic message", "Fallacies", "Form issues", "Language", "Requests"]%>
+<% @objections.each do |objection|%>
+    <option value="objection"><%= objection%></option>
+<% end %>
+</select>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
