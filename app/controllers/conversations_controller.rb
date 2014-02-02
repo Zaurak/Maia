@@ -1,10 +1,15 @@
 class ConversationsController < ApplicationController
   before_filter :signed_in_user
+  before_filter :concerned_user, only: [:show, :reply, :trash, :untrash]
   helper_method :mailbox, :conversation
 
   def index
-    @unread = mailbox.conversations({ read: false })
-    @read   = mailbox.conversations({ read: true, mailbox_type: 'not_trash' })
+    @unread     = mailbox.conversations({ read: false })
+    @read_conv  = mailbox.conversations({ read: true, mailbox_type: 'not_trash' })
+    @read = []
+    @read_conv.each do |conv|
+      @read.push(conv) unless conv.last_message.is_unread?(current_user)
+    end
   end
 
   def create
@@ -61,6 +66,18 @@ class ConversationsController < ApplicationController
       when 1 then self[subkeys.first]
       else subkeys.map{|k| self[k] }
       end
+    end
+  end
+
+  def concerned_user
+    begin
+      if !conversation.is_participant?(current_user)
+        flash[:alert] = "You do not have permission for this action"
+        redirect_to :conversations
+      end
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "You do not have permission for this action"
+      redirect_to :conversations
     end
   end
 end
