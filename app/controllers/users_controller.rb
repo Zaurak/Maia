@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
-    @debate = current_user.debate.build if signed_in?
   end
 
   def create

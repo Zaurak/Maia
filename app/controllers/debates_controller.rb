@@ -6,7 +6,7 @@ class DebatesController < ApplicationController
   @tags = ["Computers", "French Laws", "Philosophy", "USA Laws", "Politic", "Religion", "Technology", "Food", "Hardware", "Sport", "Medicine", "Animals"]
   @debate = Debate.new
   #@debates = Debate.all
-  @debates = Debate.search(params[:search])
+  @debates = Debate.search(params[:search]).paginate(page: params[:page])
   end
   
   def show

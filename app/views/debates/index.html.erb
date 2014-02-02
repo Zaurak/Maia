@@ -123,13 +123,15 @@ data-target="#createModal">
 </br>
 	<h2> Results: </h2>
 	<div class="panel panel-primary">
+  <%= will_paginate %>
 	<table class="table table-hover" id="results">
-<% @debates.each do |debate| %>
+  <% @debates.each do |debate| %>
   	<tr>
        	<td><%= link_to debate.description, debate %></td>
 	</tr>
   <% end %>
 	</table>
+  <%= will_paginate %>
 	</div>
 	</div>
 </div>
