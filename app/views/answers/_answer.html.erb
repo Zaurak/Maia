@@ -2,7 +2,16 @@
         <td> <b>Answer</b></td>
    </tr>
    <tr>
-        <td> <%= answer.content %></td>
+        <td> 
+          <div class="row">
+            <div class="span8">
+              <%= answer.content %>
+            </div>
+            <div class="span4 pull-right">
+              <%= render 'user', answer: answer %>
+            </div>
+          </div>
+        </td>
    </tr>
    <tr>
         <td>

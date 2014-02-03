@@ -5,7 +5,9 @@ class AnswersController < ApplicationController
 		@debate = Debate.find(params[:answer][:debate_id])
   	@answer = current_user.answers.build(
   														answer_params.merge(
-  															:debate_id => @debate.id ))
+  															:debate_id 	=> @debate.id,
+  															:voices			=> 1)) # TODO: Change to the user 
+  																								 # voices from credibility
   	if @answer.save
   		flash[:success] = "Answer added to the debate"
   	else
