@@ -1,21 +1,23 @@
+<% shared_url = url %>
+
 <div class="share-buttons">
 	<a  	href="https://twitter.com/share" 
 				class="twitter-share-button" 
 				data-lang="en" 
 				data-count="none" 
 				data-text="This debate is worth a look: "
-				data-url="http://www.google.com">
+				data-url=<%= shared_url %>>
 			Tweet
   </a>
 
 	<div 	class="fb-share-button" 
- 				data-href="http://www.google.com" 
+ 				data-href=<%= shared_url %>
  				data-type="button">
 	</div>
 
 	<div 	class="g-plus" 
  				data-action="share" 
  				data-annotation="none"
- 				data-href="http://www.google.com" >
+ 				data-href=<%= shared_url %> >
  	</div>
 </div>

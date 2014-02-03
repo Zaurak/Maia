@@ -12,7 +12,7 @@
 	
 	<% 
 		# Url to be shared with social networks
-		shared_url = CGI.escape "https://www.google.com"
+		shared_url = CGI.escape url
 
 		twitter_link  = "https://twitter.com/intent/tweet"
 		twitter_link += "?text=ThisThis%20debate%20is%20worth%20a%20look:%20"
@@ -25,7 +25,6 @@
 		google_plus_link  = "https://plus.google.com/share"
 		google_plus_link += "?url=" + shared_url
   %>
-
 
   <a href=<%= twitter_link %> >
   	<%= image_tag("tw_icon.png", alt: "Share on Twitter") %>
