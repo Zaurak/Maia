@@ -4,7 +4,9 @@
 <%= content_tag_for(:li, conversation) do |conversation| %>
   <p>
    <% conversation.participants.each do |participant| %>
-    	<%= link_to participant.name, participant %>
+      <% if !current_user?(participant) %>
+    	  <%= link_to participant.name, participant %>
+      <% end %>
 	<% end %> 
   </div>
   <div class="span5">
