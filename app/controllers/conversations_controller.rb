@@ -25,9 +25,6 @@ class ConversationsController < ApplicationController
     elsif recipients.count != recipient_names.count
       flash.now[:error] = "One of the recipients does not exist"
       render 'new'
-    elsif !params.has_key?(:body) || !params.has_key?(:subject)
-      flash.now[:error] = "You can't send messages without subject or content"
-      render 'new'
     else
       conversation = current_user.
       send_message(recipients, *conversation_params(:body, :subject)).conversation

@@ -8,8 +8,10 @@
       </h1>
     </section>
   </aside>
+<div class="span8" align=right>
   <%= render 'follow_form' if signed_in? %>  
-  <%= link_to('Messages', :conversations) if signed_in? && current_user?(@user) %>
+  <%= button_to('Messaging', :conversations, :method => :get, class: "btn btn-large btn-warning") if signed_in? && current_user?(@user) %>
+</div>
 </div> 
 
 <div class="container">

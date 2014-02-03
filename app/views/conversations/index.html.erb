@@ -1,14 +1,48 @@
-<h1>Conversations</h1>
-<h2>Unread</h2>
-<ul>
-	<%= render @unread %>
-</ul>
-<h2>Read</h2>
-<ul>
-	<%= render @read %>
-</ul>
-<h2>Trash</h2>
-<ul>
-  <%= render mailbox.trash %>
-</ul>
-<%= link_to 'Start Conversation', :new_conversation %>
+<!-- -->
+<div class="row">
+  <div class="span3" align=center>
+<%= button_to('New message', :new_conversation, :method => :get, class: "btn btn-large btn-success")%>
+</div>
+<div class="span9" align=right>
+		<b><%= @current_user.name %></b>
+        <%= gravatar_for @current_user %>
+</div>
+</div>
+
+<div class="row">
+  <!-- Navigation Buttons -->
+  <div class="span3">
+    <ul class="nav nav-pills nav-stacked" id="navTabs">
+      <li class="active"><a href="#home">Home</a></li>
+      <li><a href="#unread">Unread 
+<span class="badge pull-right"><%= @unread.count %></span>
+</a></li>
+      <li><a href="#read">Read
+<span class="badge pull-right"><%= @read.count %></span>
+</a></li>
+	  <li><a href="#trash">Trash
+<span class="badge pull-right"><%= @mailbox.trash.count %></span>
+</a></li>
+    </ul>
+  </div>
+
+  <!-- Content -->
+  <div class="span9">
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">Home</div>
+      <div class="tab-pane" id="unread"><%= render @unread %></div>
+      <div class="tab-pane" id="read"><%= render @read %></div>
+   	  <div class="tab-pane" id="trash"><%= render mailbox.trash %></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Enable the tabs -->
+<script type="text/javascript">
+  $('#navTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+</script>
+

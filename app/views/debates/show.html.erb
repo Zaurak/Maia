@@ -15,11 +15,10 @@
         <%= render 'shared/share_buttons', url: debate_url(@debate) %>
     </div>
 </div>
-<p> Posted by <%= @debate.user.name %> </p>
 
 <div class="row">
 <div class="span6">
-Debate started the <b>Date</b> at <b>Time</b> by <b>Name</b>
+Debate started the <b><%= @debate.created_at.strftime("%Y/%m/%d ") %></b> at <b><%= @debate.created_at.strftime("%I:%M%p") %></b> by <b><%= @debate.user.name %></b>
 </div>
 <div class="span6">
 <button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
