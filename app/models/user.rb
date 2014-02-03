@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-	has_many :debates, dependent: :destroy # part of debates
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
 	acts_as_messageable
+
+	has_many :debates
+	has_many :answers
 
 	has_many :users_relationships, foreign_key: "follower_id", dependent: :destroy
 	has_many :followed_users, through: :users_relationships, source: :followed
