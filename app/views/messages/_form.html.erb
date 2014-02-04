@@ -3,6 +3,11 @@
   <%= f.input :subject %>
   <%= f.input :body,  as: :text, :input_html => { :rows => 10 } %>
   <div class="form-actions">
+  	<p>
+  			You can use <%= link_to "Markdown", "https://wikipedia.org/wiki/Markdown",
+                                target: "_blank" %>
+  			to format your message !
+  	</p>
     <%= f.button :submit, class: 'btn-primary' %>
     <%= submit_tag 'Cancel', type: :reset, class: 'btn btn-danger' %>
     <div class="pull-right">

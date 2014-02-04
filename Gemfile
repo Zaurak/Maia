@@ -28,6 +28,9 @@ gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'mailboxer'
 gem 'simple_form'
 
+# Markdown
+gem 'redcarpet'
+
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
 
