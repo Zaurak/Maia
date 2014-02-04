@@ -11,10 +11,6 @@
 <br/>
 
 <div class="control-group">
-    <!--<label class="control-label" for="textarea">Answer: </label>
-    <div class="controls">
-        <textarea id="textarea" rows="2"></textarea>
-    </div>-->
     <%= simple_form_for(:answer, url: answers_path) do |f| %>
       <%= f.input :content, as: :text, :input_html => { :rows => 3 } %>
       <%= f.hidden_field :debate_id, value: @debate.id %>

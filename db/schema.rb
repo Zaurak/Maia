@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204094450) do
+ActiveRecord::Schema.define(version: 20140204152410) do
 
   create_table "answers", force: true do |t|
     t.integer  "user_id"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(version: 20140204094450) do
   end
 
   add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
+
+  create_table "objections", force: true do |t|
+    t.string   "name"
+    t.integer  "voices"
+    t.integer  "debate_id",        default: -1
+    t.integer  "answer_id",        default: -1
+    t.string   "justification_id", default: "-1"
+    t.string   "tag_id",           default: "-1"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "receipts", force: true do |t|
     t.integer  "receiver_id"
