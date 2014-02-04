@@ -13,8 +13,7 @@
   <!-- Navigation Buttons -->
   <div class="span3">
     <ul class="nav nav-pills nav-stacked" id="navTabs">
-      <li class="active"><a href="#home">Home</a></li>
-      <li><a href="#unread">Unread 
+      <li class="active"><a href="#unread">Unread 
 <span class="badge pull-right"><%= @unread.count %></span>
 </a></li>
       <li><a href="#read">Read
@@ -29,8 +28,7 @@
   <!-- Content -->
   <div class="span9">
     <div class="tab-content">
-      <div class="tab-pane active" id="home">Home</div>
-      <div class="tab-pane" id="unread"><%= render @unread %></div>
+      <div class="tab-pane active" id="unread"><%= render @unread %></div>
       <div class="tab-pane" id="read"><%= render @read %></div>
    	  <div class="tab-pane" id="trash"><%= render mailbox.trash %></div>
     </div>

@@ -14,7 +14,13 @@
     <%= simple_form_for(:answer, url: answers_path) do |f| %>
       <%= f.input :content, as: :text, :input_html => { :rows => 3 } %>
       <%= f.hidden_field :debate_id, value: @debate.id %>
+      <p>
+        You can use <%= link_to "Markdown", "https://wikipedia.org/wiki/Markdown",
+                                target: "_blank" %>
+        to format your message !
+      </p>
 </div>
+
 
 Improved answer (*):
 <div class="accordion" id="accordion1">
