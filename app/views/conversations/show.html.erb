@@ -1,15 +1,26 @@
 <h1>
   <%= conversation.subject %>
 </h1>
-<ul>
-  <%= content_tag_for(:li, conversation.receipts_for(current_user)) do |receipt| %>
+
+
+
+<div class="accordion" id="accordionMessage">
+  <%= content_tag_for(:tr, conversation.receipts_for(current_user)) do |receipt| %>
     <% message = receipt.message %>
-    <h3>
+<% accordionMessage_id    = "accordionMessage"+message.id.to_s %>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionMessage" href=<%= "#"+accordionMessage_id %> style="color: #000000">
       <%= message.subject %>
-    </h3>
-    <p>
-      <%= message.body %>
-    </p>
+</a>
+</div>
+<div id=<%= accordionMessage_id %> class="accordion-body collapse">
+<div class="accordion-inner">
+<%= message.body %>
+</div>
+</div>
+</div>
   <% end %>
-</ul>
+</div>
+
 <%= render 'messages/form', conversation: conversation %>
