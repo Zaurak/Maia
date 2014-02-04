@@ -1,0 +1,50 @@
+<div class="row">
+<div class="span6">
+    <label class="control-label" for="select01" id="labelContribute">Contribute to this:  </label>
+    <div class="controls" id="dropDownContribute">
+        <select id="selectContribution" class="input-medium">
+            <option>Objection</option>
+            <option>Justification</option>
+            <option>Tag</option>
+        </select>
+    </div>
+<button type="button" class="btn btn-success">OK</button>
+</div>
+</div>
+    </td>
+   </tr>
+   <tr>
+        <td>
+<% justif_id    = "justif"+contribution.id.to_s+contribution.class.name.split('::').last %>
+<div class="accordion" id="accordionJustObj">
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="accordionJustObj" href=<%= "#"+justif_id %> style="color: #000000">
+More
+</a>
+</div>
+<div id=<%= justif_id %> class="accordion-body collapse">
+<div class="accordion-inner">
+<b>Justification</b>
+<div class="row">
+<div class="span5">
+    <label class="control-label" for="select01" id="labelContribute">Contribute to this:  </label>
+    <div class="controls" id="dropDownContribute">
+        <select id="selectContribution" class="input-medium">
+            <option>Objection</option>
+            <option>Justification</option>
+            <option>Tag</option>
+        </select>
+    </div>
+<button type="button" class="btn btn-success contribute">OK</button>
+</div>
+<div class="span6">
+<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </td>
+   </tr>

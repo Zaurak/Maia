@@ -2,7 +2,7 @@
   <%= f.input :recipients, 
   						:input_html => { 	value: '', 
   															class: 'tags_with_autocomplete', 
-  															'data-autocompleteUrl' => autocomplete_user_name_tags_path
+  															'data-autocompleteUrl' => autocomplete_user_name_users_path
   														} %>
   <%= f.input :subject %>
   <%= f.input :body,  as: :text, :input_html => { :rows => 10 } %>

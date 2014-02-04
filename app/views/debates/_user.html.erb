@@ -1,8 +1,9 @@
 <div class="pull-right">
-	<%= gravatar_for answer.user, size: 20 %>
-	By <%= link_to answer.user.name, answer.user %>
+	<% user = contribution.user %>
+	<%= gravatar_for user, size: 20 %>
+	By <%= link_to user.name, user %>
 	<br />
 	<div class="pull-right">
-	With <%= answer.voices %> Voices
+	With <%= contribution.voices %> Voices
 </div>
 </div>

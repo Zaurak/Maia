@@ -1,8 +1,11 @@
 Maia::Application.routes.draw do
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
   resources :debates
   resources :answers, only: [:create]
+  resources :tags,    only: [:create]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :users do
+    get :autocomplete_user_name, :on => :collection
+  end
   resources :users_relationships, only: [:create, :destroy]
   resources :conversations, only: [:index, :show, :new, :create] do
     member do
@@ -10,9 +13,6 @@ Maia::Application.routes.draw do
       post :trash
       post :untrash
     end
-  end
-  resources :tags, only: [] do
-    get :autocomplete_user_name, :on => :collection
   end
   
   root 'static_pages#home'

@@ -52,6 +52,14 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
+  def autocomplete_user_name
+    tags = User.select([:name]).where("name LIKE ?", "%#{params[:name]}%")
+    result = tags.collect do |t|
+      { value: t.name }
+    end
+    render json: result
+  end
+
   private
 
   	def user_params

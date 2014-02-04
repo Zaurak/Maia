@@ -7,20 +7,17 @@
         <h1 class="modal-title" id="tagModalLabel">New tag</h1>
       </div>
       <div class="modal-body">
-<p>Nemo quaeso miretur, si post exsudatos labores itinerum.</p>
+<p>On debate: "<%= @debate.description %>"</p>
 <br/>
 
-<div>Tag:
-<select class="form-control"">
-<%@tags = ["CAN_VOTE", "CAN_TAG", "CAN_ANSWER", "CAN_JUSTIFY", "CAN_OBJECT", "CAN_DEBATE"]%>
-<% @tags.each do |tag|%>
-    <option value="tag"><%= tag%></option>
-<% end %>
-</select>
-</div>
+<%= simple_form_for(:tag, url: tags_path) do |f| %>
+  <%= f.input :name, collection: Tag.tag_list %>
+  <%= f.hidden_field :debate_id, value: @debate.id %>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
         <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
       </div>
     </div>

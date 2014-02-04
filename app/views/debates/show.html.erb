@@ -36,7 +36,7 @@ Debate started the <b><%= @debate.created_at.strftime("%Y/%m/%d ") %></b> at <b>
 </div>
 <div id="collapse1" class="accordion-body collapse">
 <div class="accordion-inner">
-<%= render 'debates/synthesis' %>
+<%= render 'synthesis' %>
 </div>
 </div>
 </div>
@@ -48,7 +48,7 @@ Debate started the <b><%= @debate.created_at.strftime("%Y/%m/%d ") %></b> at <b>
 </div>
 <div id="collapse2" class="accordion-body collapse">
 <div class="accordion-inner">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ligula magna, dignissim imperdiet lectus ac, laoreet tincidunt odio. Aenean quis libero placerat, dapibus augue sit amet, pulvinar felis. Curabitur fringilla blandit elit, sit amet semper urna ultrices elementum.
+<%= render 'about' %>
 </div>
 </div>
 </div>
@@ -61,7 +61,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ligula magna, 
 <div id="collapse3" class="accordion-body collapse in">
 <div class="accordion-inner">
 <div>
-<%= render 'debates/fullDebate' %>
+<%= render 'fullDebate' %>
 </div>
 </div>
 </div>

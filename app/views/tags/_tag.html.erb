@@ -1,14 +1,14 @@
 <tr>
-        <td> <b>Answer</b></td>
+        <td> <b>Tag</b></td>
    </tr>
    <tr>
         <td> 
           <div class="row">
             <div class="span8">
-              <%= answer.content %>
+              <%= tag.name %>
             </div>
             <div class="span4 pull-right">
-              <%= render 'user', contribution: answer %>
+              <%= render 'user', contribution: tag %>
             </div>
           </div>
         </td>
@@ -16,12 +16,8 @@
    <tr>
         <td>
 <div class="row">
-<div class="span5">
-<button class="btn btn-default" type="button">Show improved answers</button>
-<button class="btn btn-default" type="button">Show improving answers</button>
-</div>
-<div class="span6 pull-right">
+<div class="span6 offset5 pull-right">
 <button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
 </div>
 </div>
-<%= render 'more', contribution: answer %>
+<%= render 'more', contribution: tag %>
