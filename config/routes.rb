@@ -2,6 +2,7 @@ Maia::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :debates
+  resources :answers, only: [:create]
   resources :users_relationships, only: [:create, :destroy]
   resources :conversations, only: [:index, :show, :new, :create] do
     member do

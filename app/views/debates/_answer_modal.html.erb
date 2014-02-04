@@ -11,10 +11,13 @@
 <br/>
 
 <div class="control-group">
-    <label class="control-label" for="textarea">Answer: </label>
+    <!--<label class="control-label" for="textarea">Answer: </label>
     <div class="controls">
         <textarea id="textarea" rows="2"></textarea>
-    </div>
+    </div>-->
+    <%= simple_form_for(:answer, url: answers_path) do |f| %>
+      <%= f.input :content, as: :text, :input_html => { :rows => 3 } %>
+      <%= f.hidden_field :debate_id, value: @debate.id %>
 </div>
 
 Improved answer (*):
@@ -71,7 +74,8 @@ Solved objections (*):
 
     </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
         <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
       </div>
     </div>

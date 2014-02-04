@@ -1,7 +1,8 @@
 class Debate < ActiveRecord::Base
-  belongs_to :user
+  belongs_to  :user
+  has_many    :answers, dependent: :destroy
   default_scope -> { order('created_at DESC') }
-  validates :user_id, presence: true
+  validates :user_id,     presence: true
 	validates :description, presence: true
 
   def self.search(search)
