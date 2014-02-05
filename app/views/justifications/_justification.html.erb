@@ -1,0 +1,26 @@
+<tr>
+        <td>
+<% contribution_id    = "justif"+justification.id.to_s+justification.class.name.split('::').last %>
+<div class="accordion" id="accordionJustObj">
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="accordionJustObj" href=<%= "#"+contribution_id %> style="color: #000000">
+Justification > <%= justification.name %>
+</a>
+</div>
+<div id=<%= contribution_id %> class="accordion-body collapse">
+<div class="accordion-inner">
+<div class="row">
+  <div class="span10">
+    <%= markdown justification.content %>
+  </div>
+  <div class="span3 pull-right">
+    <%= render 'user', contribution: justification %>
+   </div>
+</div>
+<div class="row">
+<div class="span6 pull-right">
+<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
+</div>
+</div>
+<%= render 'debates/contribute', contribution: justification %>

@@ -7,30 +7,19 @@
         <h1 class="modal-title" id="justificationModalLabel">New justification</h1>
       </div>
       <div class="modal-body">
-<p>Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus fiducia vestri.</p>
-<br/>
-
-<div class="control-group">
-            <label class="control-label" for="select01">Justification type:</label>
-            <div class="controls">
-              <select id="select01">
-<%@justifications = ["Explanation of context", "Source", "Example", "Demonstration"]%>
-<% @justifications.each do |justification|%>
-    <option value="objection"><%= justification%></option>
-<% end %>
-              </select>
-            </div>
-          </div>
-
-<div class="control-group">
-            <label class="control-label" for="label">Justification:</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge" id="label">
-            </div>
+<div>
+  <%= simple_form_for(:justification, url: justifications_path) do |f| %>
+    <%= f.input :name, as: :grouped_select, collection: Justification.justification_list, group_method: :last %>
+    <%= f.input :content, as: :text, :input_html => { :rows => 10 } %> 
+    <%= f.hidden_field :parent_type,  value: "" %>
+    <%= f.hidden_field :parent_id,    value: "" %>
+    <%= f.hidden_field :debate_id,    value: @debate.id %>
 </div>
+
     </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
         <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
       </div>
     </div>
