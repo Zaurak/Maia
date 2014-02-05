@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	has_many :answers
 	has_many :tags
 	has_many :objections
+	has_many :justifications
 
 	has_many :users_relationships, foreign_key: "follower_id", dependent: :destroy
 	has_many :followed_users, through: :users_relationships, source: :followed

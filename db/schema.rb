@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204222034) do
+ActiveRecord::Schema.define(version: 20140205004837) do
 
   create_table "answers", force: true do |t|
     t.integer  "user_id"
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20140204222034) do
   create_table "debates", force: true do |t|
     t.string   "description"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "justifications", force: true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.integer  "voices"
+    t.integer  "user_id"
+    t.integer  "debate_id",    default: -1
+    t.integer  "answer_id",    default: -1
+    t.integer  "objection_id", default: -1
+    t.integer  "tag_id",       default: -1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
