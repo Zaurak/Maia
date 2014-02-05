@@ -18,7 +18,18 @@
 
 <div class="row">
 <div class="span6">
-Debate started the <b><%= @debate.created_at.strftime("%Y/%m/%d ") %></b> at <b><%= @debate.created_at.strftime("%I:%M%p") %></b> by <b><%= @debate.user.name %></b>
+Debate started the <b><%= @debate.created_at.strftime("%Y/%m/%d ") %></b> at <b><%= @debate.created_at.strftime("%I:%M%p") %></b> by <b><%= @debate.user.name %></b><br />
+<% voices = Vote.votes_for @debate %>
+            
+    With <a href="#"
+            class="voices" 
+            data-toggle="tooltip" 
+            data-container="body"
+            title="<%= "Clarity: " + voices[:clarityp].to_s + "+ " + voices[:claritym].to_s + "- <br />" +
+                                    "Usefulness: " + voices[:usefulnessp].to_s + "+ " + voices[:usefulnessm].to_s + "- <br />" +
+                                    "Completness: " + voices[:completnessp].to_s + "+ " + voices[:completnessm].to_s + "- <br />"
+                                    %>" >
+        <%= pluralize(@debate.voices, 'Voice') %> </a>
 </div>
 <% unless current_user?(@debate.user) %>
 <div class="span6">

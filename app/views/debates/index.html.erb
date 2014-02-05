@@ -44,17 +44,30 @@ data-target="#createModal">
 
     <div class="span7">
 	<h2> <b>Hot debates this month</b> </h2>
+	<% @hot_debates.each do |deb| %>
 <dl>
-  <dt><a href="url">Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat. Numne, si Coriolanus habuit amicos, ferre contra patriam arma illi cum Coriolano debuerunt? num Vecellinum amici regnum adpetentem, num Maelium debuerunt iuvare?</a></dt>
-  <dd>Tags: ...</dd>
+  <dt><%= link_to deb.description, deb %></dt>
+  <dd><% if !deb.tags.nil? %>
+  	<% deb.tags.each do |tag| %>
+  		<%= tag.name + " " %>
+  	<% end %>
+  <% end %></dd>
 </dl>
+	<% end %>
 
 	<h2> <b>Recent debates </b></h2>
+	<% @recent_debates.each do |deb| %>
 <dl>
-  <dt><a href="url">Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat. Numne, si Coriolanus habuit amicos, ferre contra patriam arma illi cum Coriolano debuerunt? num Vecellinum amici regnum adpetentem, num Maelium debuerunt iuvare?</a></dt>
-  <dd>Tags: ...</dd>
+  <dt><%= link_to deb.description, deb %></dt>
+  <dd><% if !deb.tags.nil? %>
+  	<% deb.tags.each do |tag| %>
+  		<%= tag.name + " " %>
+  	<% end %>
+  <% end %></dd>
 </dl>
-	</div>
+	<% end %>
+
+</div>
 
 
 

@@ -24,13 +24,14 @@ class VotesController < ApplicationController
   private
 
     def create_vote_for_debate
-      if Vote.find_by(user_id: current_user.id, debate_id: @debate.id)
+      debate = Debate.find(@parent_id)
+      if Vote.find_by(user_id: current_user.id, debate_id: debate.id)
         flash[:error] = "You already voted for this contribution"
       else
         vote = current_user.votes.build( vote_params.merge(
-                                          :debate_id => @debate.id)) 
+                                          :debate_id => debate.id)) 
         if vote.save
-          @debate.update_attribute(:voices, @debate.voices + total_vote_voices)
+          debate.update_attribute(:voices, debate.voices + total_vote_voices)
           flash[:success] = "Vote added to the debate"
         else
           flash[:error] = "An error occured while saving the vote."

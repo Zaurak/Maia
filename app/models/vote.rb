@@ -21,6 +21,8 @@ class Vote < ActiveRecord::Base
 			votes = Vote.where(objection_id: contribution.id).all
 	 	elsif contribution_type == "Tag" 
 			votes = Vote.where(tag_id: contribution.id).all
+		elsif contribution_type == "Debate"
+			votes = Vote.where(debate_id: contribution.id).all
 	 	end 
 
 	 	voices = {}
