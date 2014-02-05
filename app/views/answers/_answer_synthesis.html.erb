@@ -30,11 +30,19 @@
 </div>
 </div>
 <% end %>
-<%= render 'debates/contribute', contribution: answer %>
 </td>
 </tr>
 
-<%= render answer.justifications %>
+<% best_justification = answer.justifications.sort{ |a, b| b.voices <=> a.voices }.first %>
 
-<%= render answer.objections %>
+  <% if !best_justification.nil? && best_justification.voices > 3 %>
+    <%= render 'justifications/justification_synthesis', justification: best_justification %>
+  <% end %>
+
+<% best_objection = answer.objections.sort{ |a, b| b.voices <=> a.voices }.first %>
+
+  <% if !best_objection.nil? && best_objection.voices > 3 %>
+    <%= render 'objections/objection_synthesis', objection: best_objection %>
+  <% end %>
+
 

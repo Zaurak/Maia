@@ -1,97 +1,15 @@
 <!-- -->
 <table class="table">
-   <tr>
-        <td> <b>Answer</b></td>
-   </tr>
-   <tr>
-        <td> Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat.</td>
-   </tr>
-   <tr>
-        <td>
-<div class="row">
-<div class="span5">
-<button class="btn btn-default" type="button">Show improved answers</button>
-<button class="btn btn-default" type="button">Show improving answers</button>
-</div>
-<div class="span6 pull-right">
-<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
-</div>
-</div>
-<div class="row">
-<div class="span6">
-    <label class="control-label" for="select01" id="labelContribute">Contribute to this:  </label>
-    <div class="controls" id="dropDownContribute">
-        <select id="selectContribution" class="input-medium" name="option">
-            <option>Objection</option>
-            <option>Justification</option>
-            <option>Tag</option>
-        </select>
-    </div>
-<button type="button" class="btn btn-success" data-toggle="modal" id="ok">OK</button>
-</div>
-</div>
-		</td>
-   </tr>
-   <tr>
-        <td>
-<div class="accordion" id="accordionJustObj2">
-<div class="accordion-group">
-<div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionJustObj2" href="#justif2" style="color: #000000">
-More
-</a>
-</div>
-<div id="justif2" class="accordion-body collapse">
-<div class="accordion-inner">
-<table class="table">
-   <tr>
-        <td> 
-<b><b>Justification</b>
-<div class="row">
-<div class="span5">
-    <label class="control-label" for="select01" id="labelContribute">Contribute to this:  </label>
-    <div class="controls" id="dropDownContribute">
-        <select id="selectContribution" class="input-medium">
-            <option>Objection</option>
-            <option>Justification</option>
-            <option>Tag</option>
-        </select>
-    </div>
-<button type="submit" class="btn btn-success" data-toggle="modal" id="ok">OK</button>
-</div>
-<div class="span5 pull-right">
-<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
-</div>
-</div></b>
-</td>
-   </tr>
-   <tr>
-        <td> 
-<b><b>Objection</b>
-<div class="row">
-<div class="span5">
-    <label class="control-label" for="select01" id="labelContribute">Contribute to this:  </label>
-    <div class="controls" id="dropDownContribute">
-        <select id="selectContribution" class="input-medium" name="option">
-            <option>Objection</option>
-            <option>Justification</option>
-            <option>Tag</option>
-        </select>
-    </div>
-<button type="button" class="btn btn-success" data-toggle="modal" id="ok">OK</button>
-</div>
-<div class="span5 pull-right">
-<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
-</div>
-</div></b>
-</td>
-   </tr>
-</table>
+  <% best_answer = @debate.answers.sort{ |a, b| b.voices <=> a.voices }.first %>
 
-</div>
-</div>
-</div>
-</div>
-		</td>
-   </tr>
+  <% if !best_answer.nil? && best_answer.voices > 3 %>
+    <%= render 'answers/answer_synthesis', answer: best_answer %>
+  <% else %>
+    <p> The debate is not mature enough to have an interesting synthesis.</p>
+    <p> You can contribute to the debate by adding answers, justifications and
+        objections in the "Full Debate" tab. 
+    </p>
+    <p> You can also contribute by voting on the already existing contributions. </p>
+
+  <% end %>
 </table>
