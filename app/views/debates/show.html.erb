@@ -86,4 +86,14 @@ $(function(){
         }
     });
 });
+
+$(function() { 
+    $(".open-objection").on("click", function () {
+        var contribution_id = $(this).data('id');
+        var contribution_type = $(this).data('type');
+        $(".modal-body #objection_parent_id").val( contribution_id );
+        $(".modal-body #objection_parent_type").val( contribution_type );
+    });
+});
+
 </script>

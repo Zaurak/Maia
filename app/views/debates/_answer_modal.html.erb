@@ -11,71 +11,14 @@
 <br/>
 
 <div class="control-group">
-    <!--<label class="control-label" for="textarea">Answer: </label>
-    <div class="controls">
-        <textarea id="textarea" rows="2"></textarea>
-    </div>-->
     <%= simple_form_for(:answer, url: answers_path) do |f| %>
-      <%= f.input :content, as: :text, :input_html => { :rows => 3 } %>
+      <%= f.input :content, as: :text, :input_html => { :rows => 10 } %>
       <%= f.hidden_field :debate_id, value: @debate.id %>
       <p>
         You can use <%= link_to "Markdown", "https://wikipedia.org/wiki/Markdown",
                                 target: "_blank" %>
         to format your message !
       </p>
-</div>
-
-
-Improved answer (*):
-<div class="accordion" id="accordion1">
-<div class="accordion-group">
-<div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne" style="color: #000000">
-<b>List of previous Answers</b>
-</a>
-</div>
-<div id="collapseOne" class="accordion-body collapse">
-<div class="accordion-inner">
-<table class="table">
-   <tr>
-        <td><input type="checkbox" class="checkbox"/> Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat.</td>
-   </tr>
-   <tr>
-        <td><input type="checkbox" class="checkbox"/> Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat.</td>
-   </tr>
-   <tr>
-        <td><input type="checkbox" class="checkbox"/> Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat.</td>
-   </tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-
-Solved objections (*):
-<div class="accordion" id="accordion2">
-<div class="accordion-group">
-<div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" style="color: #000000">
-<b>List of previous Objections</b>
-</a>
-</div>
-<div id="collapseTwo" class="accordion-body collapse">
-<div class="accordion-inner">
-<table class="table">
-   <tr>
-        <td><input type="checkbox" class="checkbox"/> Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat.</td>
-   </tr>
-   <tr>
-        <td><input type="checkbox" class="checkbox"/> Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat.</td>
-   </tr>
-   <tr>
-        <td><input type="checkbox" class="checkbox"/> Quam ob rem id primum videamus, si placet, quatenus amor in amicitia progredi debeat.</td>
-   </tr>
-</table>
-</div>
-</div>
-</div>
 </div>
 
     </div>

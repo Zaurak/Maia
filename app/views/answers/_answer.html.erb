@@ -4,10 +4,10 @@
    <tr>
         <td> 
           <div class="row">
-            <div class="span8">
+            <div class="span10">
               <%= markdown answer.content %>
             </div>
-            <div class="span4 pull-right">
+            <div class="span3 pull-right">
               <%= render 'user', contribution: answer %>
             </div>
           </div>
@@ -16,12 +16,12 @@
    <tr>
         <td>
 <div class="row">
-<div class="span5">
-<button class="btn btn-default" type="button">Show improved answers</button>
-<button class="btn btn-default" type="button">Show improving answers</button>
-</div>
 <div class="span6 pull-right">
 <button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
 </div>
 </div>
-<%= render 'more', contribution: answer %>
+<%= render 'debates/contribute', contribution: answer %>
+
+<%= render answer.objections %>
+
+<%#= render answer.justifications %>

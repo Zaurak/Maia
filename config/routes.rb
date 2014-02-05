@@ -1,13 +1,14 @@
 Maia::Application.routes.draw do
   resources :debates
-  resources :answers, only: [:create]
-  resources :tags,    only: [:create]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :answers,     only: [:create]
+  resources :tags,        only: [:create]
+  resources :objections,  only: [:create]
+  resources :sessions,    only: [:new, :create, :destroy]
   resources :users do
     get :autocomplete_user_name, :on => :collection
   end
   resources :users_relationships, only: [:create, :destroy]
-  resources :conversations, only: [:index, :show, :new, :create] do
+  resources :conversations,       only: [:index, :show, :new, :create] do
     member do
       post :reply
       post :trash
