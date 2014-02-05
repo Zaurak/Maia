@@ -23,4 +23,13 @@ Objection
 <button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
 </div>
 </div>
-<%= render 'debates/contribute', contribution: objection %>
+		
+		<%= render 'debates/contribute', contribution: objection %>
+
+<table>
+		<%= render objection.justifications %>
+</table>
+
+	</td>
+</tr>
+</div>

@@ -3,6 +3,8 @@ class Justification < ActiveRecord::Base
 	belongs_to 	:debate
 	belongs_to	:answer
 	belongs_to	:tag
+	belongs_to 	:objection
+	has_many		:objections
 	validates 	:user_id, 	presence: true
 	validates 	:name, 			presence: true
 	validates		:content,		presence: true

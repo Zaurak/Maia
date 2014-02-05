@@ -1,5 +1,5 @@
 <tr>
-        <td>
+	<td>
 <% contribution_id    = "justif"+justification.id.to_s+justification.class.name.split('::').last %>
 <div class="accordion" id="accordionJustObj">
 <div class="accordion-group">
@@ -24,3 +24,9 @@ Justification > <%= justification.name %>
 </div>
 </div>
 <%= render 'debates/contribute', contribution: justification %>
+
+<table>
+<%= render justification.objections %>
+</table>
+</td>
+</tr>

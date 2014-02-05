@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205004837) do
+ActiveRecord::Schema.define(version: 20140205103436) do
 
   create_table "answers", force: true do |t|
     t.integer  "user_id"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20140205004837) do
     t.integer  "answer_id",    default: -1
     t.integer  "objection_id", default: -1
     t.integer  "tag_id",       default: -1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "justifications_objections", id: false, force: true do |t|
+    t.integer  "justification_id"
+    t.integer  "objection_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

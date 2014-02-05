@@ -3,6 +3,8 @@ class Objection < ActiveRecord::Base
 	belongs_to 	:debate
 	belongs_to	:answer
 	belongs_to	:tag
+	belongs_to	:justification
+	has_many 		:justifications
 	validates 	:user_id, 	presence: true
 	validates 	:name, 			presence: true
 	validates		:voices,		presence: true

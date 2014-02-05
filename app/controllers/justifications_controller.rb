@@ -32,7 +32,11 @@ class JustificationsController < ApplicationController
     end
 
     def create_justification_for_objection
-
+    @objection = Objection.find(params[:justification][:parent_id])
+    current_user.justifications.build( answer_params.merge(
+                                        :objection_id  => @objection.id,
+                                        :voices     => 1)) 
+                                    # TODO: Change to the user voices from credibility
     end
 
     def create_justification_for_tag
