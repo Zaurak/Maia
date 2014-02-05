@@ -99,7 +99,9 @@ $(function() {
         var vote_type = $(this).data('type');
         $(".modal-body #vote_parent_id").val( vote_id );
         $(".modal-body #vote_parent_type").val( vote_type );
-    });    
+    }); 
+
+    $(".voices").tooltip({html: true});   
 });
 
 </script>

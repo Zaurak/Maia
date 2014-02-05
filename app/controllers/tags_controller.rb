@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   	@tag = current_user.tags.build(
   														answer_params.merge(
   															:debate_id 	=> @debate.id,
-  															:voices			=> 1)) # TODO: Change to the user 
+  															:voices			=> 0)) # TODO: Change to the user 
   																								 # voices from credibility
   	if @tag.save
   		flash[:success] = "Tag added to the debate"

@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
   	@answer = current_user.answers.build(
   														answer_params.merge(
   															:debate_id 	=> @debate.id,
-  															:voices			=> 1)) # TODO: Change to the user 
+  															:voices			=> 0)) # TODO: Change to the user 
   																								 # voices from credibility
   	if @answer.save
   		flash[:success] = "Answer added to the debate"

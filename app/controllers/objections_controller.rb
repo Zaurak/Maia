@@ -29,7 +29,7 @@ class ObjectionsController < ApplicationController
     @answer = Answer.find(params[:objection][:parent_id])
     current_user.objections.build( answer_params.merge(
                                     :answer_id  => @answer.id,
-                                    :voices     => 1)) 
+                                    :voices     => 0)) 
                                     # TODO: Change to the user voices from credibility
     end
 
@@ -37,7 +37,7 @@ class ObjectionsController < ApplicationController
     @justification = Justification.find(params[:objection][:parent_id])
     current_user.objections.build( answer_params.merge(
                                     :justification_id  => @justification.id,
-                                    :voices     => 1)) 
+                                    :voices     => 0)) 
                                     # TODO: Change to the user voices from credibility
     end
 
@@ -45,7 +45,7 @@ class ObjectionsController < ApplicationController
     @tag = Tag.find(params[:objection][:parent_id])
     current_user.objections.build( answer_params.merge(
                                     :tag_id     => @tag.id,
-                                    :voices     => 1)) 
+                                    :voices     => 0)) 
                                     # TODO: Change to the user voices from credibility
     end    
 

@@ -4,6 +4,17 @@
 	By <%= link_to user.name, user %>
 	<br />
 	<div class="pull-right">
-	With <%= pluralize(contribution.voices, 'Voice') %>
+
+	<% voices = Vote.votes_for contribution %>
+			
+	With <a href="#"
+					class="voices" 
+					data-toggle="tooltip" 
+					data-container="body"
+					title="<%= "Clarity: " + voices[:clarityp].to_s + "+ " + voices[:claritym].to_s + "- <br />" +
+					   			 	"Usefulness: " + voices[:usefulnessp].to_s + "+ " + voices[:usefulnessm].to_s + "- <br />" +
+					   				"Completness: " + voices[:completnessp].to_s + "+ " + voices[:completnessm].to_s + "- <br />"
+					   				%>" >
+		<%= pluralize(contribution.voices, 'Voice') %> </a>
 </div>
 </div>
