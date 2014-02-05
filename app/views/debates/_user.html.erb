@@ -4,6 +4,6 @@
 	By <%= link_to user.name, user %>
 	<br />
 	<div class="pull-right">
-	With <%= contribution.voices %> Voices
+	With <%= pluralize(contribution.voices, 'Voice') %>
 </div>
 </div>

@@ -15,23 +15,46 @@
             <tr>
               <td>
     <div class="span2">
+
+      <%= simple_form_for(:vote, url: votes_path) do |f| %>
+
 <table class="table table-bordered">
 <tr><th>Criteria</th><th>Vote</th></tr>
 <tr><td>Clarity</td><td><div class="btn-group" data-toggle="buttons-radio">
-  <button type="button" class="btn btn-primary">+1</button>
-  <button type="button" class="btn btn-primary">0</button>
-  <button type="button" class="btn btn-primary">-1</button>
+  
+  <%= f.input_field :clarity, 
+                    collection: [['+1', 1], ['0', 0], ['-1', -1]], 
+                    as: :radio_buttons, 
+                    input_html: { data: {toggle: 'buttons-radio'} }, 
+                    item_wrapper_class: 'btn btn-toggle btn-primary',
+                    checked: '0' %>
+
 </div></td></tr>
 <tr><td>Usefulness</td><td><div class="btn-group" data-toggle="buttons-radio">
-  <button type="button" class="btn btn-primary">+1</button>
-  <button type="button" class="btn btn-primary">0</button>
-  <button type="button" class="btn btn-primary">-1</button>
-</div></td></tr>
+  
+  <%= f.input_field :usefulness, 
+                    collection: [['+1', 1], ['0', 0], ['-1', -1]], 
+                    as: :radio_buttons, 
+                    input_html: { data: {toggle: 'buttons-radio'} }, 
+                    item_wrapper_class: 'btn btn-toggle btn-primary',
+                    checked: '0' %>
+
+  </div></td></tr>
 <tr><td>Completness</td><td><div class="btn-group" data-toggle="buttons-radio">
-  <button type="button" class="btn btn-primary">+1</button>
-  <button type="button" class="btn btn-primary">0</button>
-  <button type="button" class="btn btn-primary">-1</button>
+  
+  <%= f.input_field :completness, 
+                    collection: [['+1', 1], ['0', 0], ['-1', -1]], 
+                    as: :radio_buttons, 
+                    input_html: { data: {toggle: 'buttons-radio'} }, 
+                    item_wrapper_class: 'btn btn-toggle btn-primary',
+                    checked: '0' %>
+
 </div></td></tr>
+
+<%= f.hidden_field :parent_type,  value: "" %>
+<%= f.hidden_field :parent_id,    value: "" %>
+<%= f.hidden_field :debate_id,    value: @debate.id %>
+
 </table>
 </div>
               </td>
@@ -55,7 +78,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
         <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
       </div>
     </div>

@@ -18,11 +18,21 @@ Objection
     <%= render 'user', contribution: objection %>
    </div>
 </div>
+
+<% unless current_user?(objection.user) %>
 <div class="row">
 <div class="span6 pull-right">
-<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
+<button class="btn btn-large btn-primary pull-right open-vote" 
+				type="button" 
+				data-toggle="modal" 
+				data-target="#voteModal"
+        data-id=<%= objection.id.to_s %>
+        data-type=<%= objection.class.name.split('::').last %>>
+				Vote
+</button>
 </div>
 </div>
+<% end %>
 		
 		<%= render 'debates/contribute', contribution: objection %>
 

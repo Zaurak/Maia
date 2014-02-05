@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205103436) do
+ActiveRecord::Schema.define(version: 20140205141817) do
 
   create_table "answers", force: true do |t|
     t.integer  "user_id"
@@ -44,13 +44,6 @@ ActiveRecord::Schema.define(version: 20140205103436) do
     t.integer  "answer_id",    default: -1
     t.integer  "objection_id", default: -1
     t.integer  "tag_id",       default: -1
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "justifications_objections", id: false, force: true do |t|
-    t.integer  "justification_id"
-    t.integer  "objection_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -136,5 +129,19 @@ ActiveRecord::Schema.define(version: 20140205103436) do
   add_index "users_relationships", ["followed_id"], name: "index_users_relationships_on_followed_id"
   add_index "users_relationships", ["follower_id", "followed_id"], name: "index_users_relationships_on_follower_id_and_followed_id", unique: true
   add_index "users_relationships", ["follower_id"], name: "index_users_relationships_on_follower_id"
+
+  create_table "votes", force: true do |t|
+    t.integer  "clarity"
+    t.integer  "usefulness"
+    t.integer  "completness"
+    t.integer  "user_id"
+    t.integer  "debate_id",        default: -1
+    t.integer  "answer_id",        default: -1
+    t.integer  "tag_id",           default: -1
+    t.integer  "justification_id", default: -1
+    t.integer  "objection_id",     default: -1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

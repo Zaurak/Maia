@@ -20,9 +20,18 @@
 <div class="span6">
 Debate started the <b><%= @debate.created_at.strftime("%Y/%m/%d ") %></b> at <b><%= @debate.created_at.strftime("%I:%M%p") %></b> by <b><%= @debate.user.name %></b>
 </div>
+<% unless current_user?(@debate.user) %>
 <div class="span6">
-<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
+<button class="btn btn-large btn-primary pull-right open-vote" 
+        type="button" 
+        data-toggle="modal" 
+        data-target="#voteModal"
+        data-id=<%= @debate.id.to_s %>
+        data-type=<%= @debate.class.name.split('::').last %> >
+        Vote
+</button>
 </div>
+<% end %>
 </div>
 
 </br>
@@ -84,6 +93,13 @@ $(function() {
         $(".modal-body #justification_parent_id").val( justification_id );
         $(".modal-body #justification_parent_type").val( justification_type );
     });
+
+    $(".open-vote").on("click", function () {
+        var vote_id = $(this).data('id');
+        var vote_type = $(this).data('type');
+        $(".modal-body #vote_parent_id").val( vote_id );
+        $(".modal-body #vote_parent_type").val( vote_type );
+    });    
 });
 
 </script>

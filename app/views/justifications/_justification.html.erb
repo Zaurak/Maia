@@ -18,11 +18,22 @@ Justification > <%= justification.name %>
     <%= render 'user', contribution: justification %>
    </div>
 </div>
+
+<% unless current_user?(justification.user) %>
 <div class="row">
 <div class="span6 pull-right">
-<button class="btn btn-large btn-primary pull-right" type="button" data-toggle="modal" data-target="#voteModal">Vote</button>
+<button class="btn btn-large btn-primary pull-right open-vote" 
+				type="button" 
+				data-toggle="modal" 
+				data-target="#voteModal"
+        data-id=<%= justification.id.to_s %>
+        data-type=<%= justification.class.name.split('::').last %>>
+				Vote
+</button>
 </div>
 </div>
+<% end %>
+
 <%= render 'debates/contribute', contribution: justification %>
 
 <table>
