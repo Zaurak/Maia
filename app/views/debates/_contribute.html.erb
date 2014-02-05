@@ -1,0 +1,27 @@
+<% contribution_class = contribution.class.name.split('::').last %>
+<div class="row">
+<div class="span6">
+    <label class="control-label" for="select01" id="labelContribute">Contribute to this:  </label>
+    <% if contribution_class != "Justification" %>
+    <button class="btn btn-success open-justif"     
+            type="button" 
+            data-id=<%= contribution.id.to_s %> 
+            data-type=<%= contribution_class %> 
+            data-toggle="modal" 
+            data-target="#justificationModal">Justification
+    </button>
+    <% end %>
+
+    <% if contribution_class != "Objection" %>
+    <button class="btn btn-success open-objection"  
+            type="button" 
+            data-id=<%= contribution.id.to_s %> 
+            data-type=<%= contribution_class %> 
+            data-toggle="modal" 
+            data-target="#objectionModal">Objection
+    </button>
+    <% end %>
+</div>
+</div>
+    </td>
+   </tr>

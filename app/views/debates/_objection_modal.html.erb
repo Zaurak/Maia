@@ -7,20 +7,18 @@
         <h1 class="modal-title" id="objectionModalLabel">New objection</h1>
       </div>
       <div class="modal-body">
-<p>Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus fiducia vestri.</p>
-<br/>
-
-<div>Objection type:
-<select class="form-control">
-<%@objections = ["Toxic message", "Fallacies", "Form issues", "Language", "Requests"]%>
-<% @objections.each do |objection|%>
-    <option value="objection"><%= objection%></option>
-<% end %>
-</select>
+<div>
+  <%= simple_form_for(:objection, url: objections_path) do |f| %>
+    <%= f.input :name, as: :grouped_select, collection: Objection.objection_list, group_method: :last %>
+    <%= f.hidden_field :parent_type,  value: "" %>
+    <%= f.hidden_field :parent_id,    value: "" %>
+    <%= f.hidden_field :debate_id,    value: @debate.id %>
 </div>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
         <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
       </div>
     </div>
