@@ -2,5 +2,5 @@
    <tr>
         <td><button class="btn btn-large btn-info" type="button" data-toggle="modal" data-target="#answerModal">Propose an Answer</button></td>
    </tr>
-   <%= render @debate.answers %>
+   <%= render @debate.answers.sort { |a, b| b.voices <=> a.voices } %>
 </table>

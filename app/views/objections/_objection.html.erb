@@ -37,7 +37,7 @@ Objection
 		<%= render 'debates/contribute', contribution: objection %>
 
 <table>
-		<%= render objection.justifications %>
+		<%= render objection.justifications.sort { |a, b| b.voices <=> a.voices } %>
 </table>
 
 	</td>

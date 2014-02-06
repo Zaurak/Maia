@@ -34,7 +34,9 @@
 </td>
 </tr>
 
-<%= render answer.justifications %>
+<% contributions = answer.justifications + answer.objections %>
+<% contributions.sort! { |a, b| b.voices <=> a.voices } %>
 
-<%= render answer.objections %>
+<%= render contributions %>
+
 
