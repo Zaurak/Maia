@@ -1,0 +1,25 @@
+<!-- Modal window-->
+<div class="modal hide fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="tagModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h1 class="modal-title" id="tagModalLabel">New tag</h1>
+      </div>
+      <div class="modal-body">
+<p>On debate: "<%= @debate.description %>"</p>
+<br/>
+
+<%= simple_form_for(:tag, url: tags_path) do |f| %>
+  <%= f.input :name, collection: Tag.tag_list %>
+  <%= f.hidden_field :debate_id, value: @debate.id %>
+
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+        <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

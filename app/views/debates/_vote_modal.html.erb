@@ -1,0 +1,87 @@
+<!-- Modal window-->
+<div class="modal hide fade" id="voteModal" tabindex="-1" role="dialog" aria-labelledby="voteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h1 class="modal-title" id="voteModalLabel">New vote</h1>
+      </div>
+      <div class="modal-body">
+<p>Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus fiducia vestri.</p>
+<br/>
+
+<div class="row">
+<table>
+            <tr>
+              <td>
+    <div class="span2">
+
+      <%= simple_form_for(:vote, url: votes_path) do |f| %>
+
+<table class="table table-bordered">
+<tr><th>Criteria</th><th>Vote</th></tr>
+<tr><td>Clarity</td><td><div class="btn-group" data-toggle="buttons-radio">
+  
+  <%= f.input_field :clarity, 
+                    collection: [['+1', 1], ['0', 0], ['-1', -1]], 
+                    as: :radio_buttons, 
+                    input_html: { data: {toggle: 'buttons-radio'} }, 
+                    item_wrapper_class: 'btn btn-toggle btn-primary',
+                    checked: '0' %>
+
+</div></td></tr>
+<tr><td>Usefulness</td><td><div class="btn-group" data-toggle="buttons-radio">
+  
+  <%= f.input_field :usefulness, 
+                    collection: [['+1', 1], ['0', 0], ['-1', -1]], 
+                    as: :radio_buttons, 
+                    input_html: { data: {toggle: 'buttons-radio'} }, 
+                    item_wrapper_class: 'btn btn-toggle btn-primary',
+                    checked: '0' %>
+
+  </div></td></tr>
+<tr><td>Completness</td><td><div class="btn-group" data-toggle="buttons-radio">
+  
+  <%= f.input_field :completness, 
+                    collection: [['+1', 1], ['0', 0], ['-1', -1]], 
+                    as: :radio_buttons, 
+                    input_html: { data: {toggle: 'buttons-radio'} }, 
+                    item_wrapper_class: 'btn btn-toggle btn-primary',
+                    checked: '0' %>
+
+</div></td></tr>
+
+<%= f.hidden_field :parent_type,  value: "" %>
+<%= f.hidden_field :parent_id,    value: "" %>
+<%= f.hidden_field :debate_id,    value: @debate.id %>
+
+</table>
+</div>
+              </td>
+
+              <td>
+    <div class="span4 offset1">
+<table class="table table-bordered">
+<tr>
+<p>Your maximum credibility on this debate is calculated to be: <b>342</b></p>
+
+        <div class="progress progress-striped">
+    <div class="bar" style="width: 30%;"></div>
+    </div>
+</tr>
+</table>
+</div>
+              </td>
+            </tr>
+</table>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+        <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

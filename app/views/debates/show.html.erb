@@ -1,4 +1,118 @@
+<!-- Modal windows-->
+<%= render 'debates/vote_modal' %>
+<%= render 'debates/answer_modal' %>
+<%= render 'debates/objection_modal' %>
+<%= render 'debates/justification_modal' %>
+<%= render 'debates/tag_modal' %>
+
 <% provide(:title, @debate.description) %>
+
 <h1>
   <%= @debate.description %>
 </h1>
+<div class="row" >
+    <div class="pull-right">
+        <%= render 'shared/share_buttons', url: debate_url(@debate) %>
+    </div>
+</div>
+
+<div class="row">
+<div class="span6">
+Debate started the <b><%= @debate.created_at.strftime("%Y/%m/%d ") %></b> at <b><%= @debate.created_at.strftime("%I:%M%p") %></b> by <b><%= @debate.user.name %></b><br />
+<% voices = Vote.votes_for @debate %>
+            
+    With <a href="#"
+            class="voices" 
+            data-toggle="tooltip" 
+            data-container="body"
+            title="<%= "Clarity: " + voices[:clarityp].to_s + "+ " + voices[:claritym].to_s + "- <br />" +
+                                    "Usefulness: " + voices[:usefulnessp].to_s + "+ " + voices[:usefulnessm].to_s + "- <br />" +
+                                    "Completness: " + voices[:completnessp].to_s + "+ " + voices[:completnessm].to_s + "- <br />"
+                                    %>" >
+        <%= pluralize(@debate.voices, 'Voice') %> </a>
+</div>
+<% unless current_user?(@debate.user) %>
+<div class="span6">
+<button class="btn btn-large btn-primary pull-right open-vote" 
+        type="button" 
+        data-toggle="modal" 
+        data-target="#voteModal"
+        data-id=<%= @debate.id.to_s %>
+        data-type=<%= @debate.class.name.split('::').last %> >
+        Vote
+</button>
+</div>
+<% end %>
+</div>
+
+</br>
+
+<div class="accordion" id="myaccordion">
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#myaccordion" href="#collapse1" style="color: #000000">
+<b>Synthesis</b>
+</a>
+</div>
+<div id="collapse1" class="accordion-body collapse">
+<div class="accordion-inner">
+<%= render 'synthesis' %>
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#myaccordion" href="#collapse2" style="color: #000000">
+<b>About this debate</b>
+</a>
+</div>
+<div id="collapse2" class="accordion-body collapse">
+<div class="accordion-inner">
+<%= render 'about' %>
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#myaccordion" href="#collapse3" style="color: #000000">
+<b>Full debate</b>
+</a>
+</div>
+<div id="collapse3" class="accordion-body collapse in">
+<div class="accordion-inner">
+<div>
+<%= render 'fullDebate' %>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+$(function() { 
+    $(".open-objection").on("click", function () {
+        var contribution_id = $(this).data('id');
+        var contribution_type = $(this).data('type');
+        $(".modal-body #objection_parent_id").val( contribution_id );
+        $(".modal-body #objection_parent_type").val( contribution_type );
+    });
+
+    $(".open-justification").on("click", function () {
+        var justification_id = $(this).data('id');
+        var justification_type = $(this).data('type');
+        $(".modal-body #justification_parent_id").val( justification_id );
+        $(".modal-body #justification_parent_type").val( justification_type );
+    });
+
+    $(".open-vote").on("click", function () {
+        var vote_id = $(this).data('id');
+        var vote_type = $(this).data('type');
+        $(".modal-body #vote_parent_id").val( vote_id );
+        $(".modal-body #vote_parent_type").val( vote_type );
+    }); 
+
+    $(".voices").tooltip({html: true});   
+});
+
+</script>

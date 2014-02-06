@@ -3,7 +3,13 @@ class UsersController < ApplicationController
   before_action :correct_user,    only: [:edit, :update, :destroy]
 
   def show
-  	@user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+      @debates = @user.debates.paginate(page: params[:page])
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "This user does not exist"
+      redirect_to root_url
+    end
   end
 
   def new
@@ -31,9 +37,11 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to user_path(@user) + "#information"
     else
-      render 'edit'
+      params[:submitted] = true
+      @debates = @user.debates.paginate(page: params[:page])
+      render 'show'
     end
   end
 
@@ -44,6 +52,14 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
+  def autocomplete_user_name
+    tags = User.select([:name]).where("name LIKE ?", "%#{params[:name]}%")
+    result = tags.collect do |t|
+      { value: t.name }
+    end
+    render json: result
+  end
+
   private
 
   	def user_params
@@ -52,13 +68,6 @@ class UsersController < ApplicationController
   	end
 
     # Before filters
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

@@ -1,0 +1,15 @@
+<!-- -->
+<table class="table">
+  <% best_answer = @debate.answers.sort{ |a, b| b.voices <=> a.voices }.first %>
+
+  <% if !best_answer.nil? && best_answer.voices > 3 %>
+    <%= render 'answers/answer_synthesis', answer: best_answer %>
+  <% else %>
+    <p> The debate is not mature enough to have an interesting synthesis.</p>
+    <p> You can contribute to the debate by adding answers, justifications and
+        objections in the "Full Debate" tab. 
+    </p>
+    <p> You can also contribute by voting on the already existing contributions. </p>
+
+  <% end %>
+</table>

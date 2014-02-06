@@ -1,0 +1,10 @@
+<!-- Debates for the user-->
+<div class="span7">
+  <% if @user.debates.any? %>
+    <h3>Debates (<%= @user.debates.count %>)</h3>
+    <ol class="debates">
+      <%= render @debates %>
+    </ol>
+    <%= will_paginate @debates %>
+  <% end %>
+</div>

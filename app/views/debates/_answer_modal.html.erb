@@ -1,0 +1,32 @@
+<!-- Modal window-->
+<div class="modal hide fade" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="answerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h1 class="modal-title" id="answerModalLabel">New answer</h1>
+      </div>
+      <div class="modal-body">
+<p>On debate : <b><%= @debate.description %></b></p>
+<br/>
+
+<div class="control-group">
+    <%= simple_form_for(:answer, url: answers_path) do |f| %>
+      <%= f.input :content, as: :text, :input_html => { :rows => 10 } %>
+      <%= f.hidden_field :debate_id, value: @debate.id %>
+      <p>
+        You can use <%= link_to "Markdown", "https://wikipedia.org/wiki/Markdown",
+                                target: "_blank" %>
+        to format your message !
+      </p>
+</div>
+
+    </div>
+      <div class="modal-footer">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+        <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

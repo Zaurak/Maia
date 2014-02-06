@@ -24,3 +24,22 @@ h2 {
   text-align:left;
   font-weight: normal;
 }
+
+.accordion-toggle {
+    background-color: #DCDCDC;
+    display: block;
+    font-size: 18px;
+    height: 25px;
+    line-height: 23px;
+    padding: 10px 20px 10px 40px;
+}
+
+/* Modal */
+
+.modal-body {
+    max-height: 800px;
+}
+
+.btn-toggle input {
+    display: none;
+}

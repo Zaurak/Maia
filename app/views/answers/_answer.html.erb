@@ -1,0 +1,40 @@
+<tr>
+        <td> <b>Answer</b></td>
+   </tr>
+   <tr>
+        <td> 
+          <div class="row">
+            <div class="span10">
+              <%= markdown answer.content %>
+            </div>
+            <div class="span3 pull-right">
+              <%= render 'user', contribution: answer %>
+            </div>
+          </div>
+        </td>
+   </tr>
+   <tr>
+        <td>
+
+<% unless current_user?(answer.user) %>
+<div class="row">
+<div class="span6 pull-right">
+<button class="btn btn-large btn-primary pull-right open-vote" 
+        type="button" 
+        data-toggle="modal" 
+        data-target="#voteModal"
+        data-id=<%= answer.id.to_s %>
+        data-type=<%= answer.class.name.split('::').last %> >
+        Vote
+</button>
+</div>
+</div>
+<% end %>
+<%= render 'debates/contribute', contribution: answer %>
+</td>
+</tr>
+
+<%= render answer.justifications %>
+
+<%= render answer.objections %>
+

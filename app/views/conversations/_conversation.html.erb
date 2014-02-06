@@ -1,0 +1,24 @@
+<!-- -->
+<div class="row">
+  <div class="span2">
+<%= content_tag_for(:li, conversation) do |conversation| %>
+  <p>
+   <% conversation.participants.each do |participant| %>
+      <% if !current_user?(participant) %>
+    	  <%= link_to participant.name, participant %>
+      <% end %>
+	<% end %> 
+  </div>
+  <div class="span5">
+	<%= link_to conversation.subject, conversation %>
+  </div>
+  <div class="span2">
+    <% if conversation.is_completely_trashed?(current_user) %>
+      <%= button_to('Untrash', [:untrash, conversation], method: :post, class: "btn btn-medium btn-default") %>
+    <% else %>
+      <%= button_to('Move to trash', [:trash, conversation], method: :post, class: "btn btn-medium btn-danger") %>
+    <% end %>
+  </p>
+<% end %>
+  </div>
+</div>

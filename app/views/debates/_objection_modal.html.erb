@@ -1,0 +1,26 @@
+<!-- Modal window-->
+<div class="modal hide fade" id="objectionModal" tabindex="-1" role="dialog" aria-labelledby="objectionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h1 class="modal-title" id="objectionModalLabel">New objection</h1>
+      </div>
+      <div class="modal-body">
+<div>
+  <%= simple_form_for(:objection, url: objections_path) do |f| %>
+    <%= f.input :name, as: :grouped_select, collection: Objection.objection_list, group_method: :last %>
+    <%= f.hidden_field :parent_type,  value: "" %>
+    <%= f.hidden_field :parent_id,    value: "" %>
+    <%= f.hidden_field :debate_id,    value: @debate.id %>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+        <button type="button" class="btn btn default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

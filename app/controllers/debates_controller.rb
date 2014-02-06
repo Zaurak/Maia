@@ -1,7 +1,12 @@
 class DebatesController < ApplicationController
+  before_action :signed_in_user,  only: [:create] 
+
   def index
-  @tags = ["Computers", "French Laws", "Philosophy", "USA Laws", "Politic", "Religion", "Technology", "Food", "Hardware", "Sport", "Medicine", "Animals"]
+  @tags = Tag.tag_list
   @debate = Debate.new
+  @debates = Debate.search(params[:search]).paginate(page: params[:page])
+  @hot_debates = Debate.all.sort { |a, b| b.voices <=> a.voices }.first(3)
+  @recent_debates = Debate.order(created_at: :desc).first(3)
   end
   
   def show
@@ -9,19 +14,26 @@ class DebatesController < ApplicationController
   end
 
   def new
+    @tags = Tag.tag_list
   	@debate = Debate.new
   end
 
   def create
-  	@debate = Debate.new(debate_params)
+  	@debate = current_user.debates.build(debate_params.merge(
+                                          voices: 0))
   	if @debate.save
-  		redirect_to @debate
       flash[:success] = "New debate saved!"
+      redirect_to @debate
   	else
   		flash[:error] = "You must enter a valid debate question."
-  		render 'new'
+      redirect_to debates_path
   	end
   end
+
+  def destroy
+  end
+
+  private
 
   def debate_params
       params.require(:debate).permit(:description)
